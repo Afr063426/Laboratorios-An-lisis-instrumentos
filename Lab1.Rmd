@@ -62,10 +62,16 @@ calculo_precio <-
         N <- length(fecha_pago) - 2
         c <- length(fecha_pago) - c(2:length(fecha_pago))
         cupon_p <- cupon / periodos
+        if(N==0){
+         t_1<-facial*cupon_p+facial 
+         t_2<-tasa_efectiva*Dsc/E+1
+         t_3<-facial*A/E*cupon_p
+         vectorr[i]<-t_1/t_2-t_3
+        }else{
         vectorr[i] <- (
           facial * (1 + tasa_efectiva) ^ (-N - Dsc / E) + facial * cupon_p * sum((1 +
                                                                                     tasa_efectiva) ^ (-c - Dsc / E)) - facial * cupon_p * A / E
-        )
+        )}
       } else{
         vectorr[i] <- facial
       }
@@ -118,6 +124,75 @@ creacion_de_columnas <-
     ))
   }
 ```
+
+#Para bono 1
+```{r}
+fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
+fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
+
+interes1_1 <- as.numeric(Bono3$...1[-c(1:15)])
+interes1_1 <- (0:(length(interes2_1) - 1))
+
+
+
+factor_lineal
+YAS_BOND_YLD_1 <- c(2.458612, rep(0, length(interes1_1) - 1))
+for (i in 2:length(YAS_BOND_YLD_2)) {
+  YAS_BOND_YLD_1[i] <- YAS_BOND_YLD_1[i - 1] + ShockF_1[i - 1]
+}
+
+Gcapital_1 <- c(0)
+TOTAL_1 <- c()
+Retorno_total_1 <- c()
+
+
+fecha_pago <- as.Date("2019-02-28")
+j <- as.Date("2019-02-28")
+while (j + 180 <= as.Date("2021-02-28")) {
+  fecha_pago <-
+    c(fecha_pago, ceiling_date(j + 180, unit = "month") - 1)
+  j = j + 180
+}
+
+YAS_BOND_PX_2 <-
+  calculo_precio(100, 0.025, YAS_BOND_YLD_2, 2, 360, as.Date("2021-02-28"))
+
+bono_2 <-
+  creacion_de_columnas(
+    interes2_1,
+    interes2_2,
+    YAS_BOND_YLD_2,
+    Gcapital_2 ,
+    ShockF_2,
+    TOTAL_2,
+    Retorno_total_2
+  )
+names(bono_2) <-
+  c(
+    "interes2_1",
+    "interes2_2",
+    "YAS_BOND_YLD_2",
+    "Gcapital_2",
+    "ShockF_2",
+    "TOTAL_2",
+    "Retorno_total_2"
+  )
+bono2 <-
+  data.frame(
+    "Fecha de evaluación" = fecha,
+    "INT_ACC 1" = bono_2$interes2_1,
+    "INT_ACC 2" = bono_2$interes2_2,
+    bono_2$YAS_BOND_YLD_2,
+    bono_2$ShockF_2,
+    YAS_BOND_PX_2,
+    bono_2$Gcapital_2,
+    bono_2$TOTAL_2,
+    bono_2$Retorno_total_2
+  )
+
+
+```
+
 
 #Para bono 2
 ```{r}
