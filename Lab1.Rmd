@@ -6,6 +6,7 @@ output: pdf_document
 ---
 
 
+
 Primero se cargan los paquetes y los datos
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -99,7 +100,7 @@ creacion_de_columnas <-
       yas_bond_yld[i + 1] <- yas_bond_yld[i] - shock[i]
       G_capital <-
         c(G_capital,
-          (YAS_BOND_PX_2[i + 1] - as.numeric(as.character(
+          (YAS_BOND_PX[i + 1] - as.numeric(as.character(
             Datos$`Precio Compra`
           ))) *
             as.numeric(as.character(Datos$Monto)) / 100)
@@ -130,14 +131,14 @@ creacion_de_columnas <-
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
 fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
 
-interes1_1 <- as.numeric(Bono3$...1[-c(1:15)])
-interes1_1 <- (0:(length(interes2_1) - 1))
+interes1_1 <- as.numeric(Bono1$...2[-c(1:15)])
+interes1_2 <- (0:(length(interes1_1) - 1))
 
-
-
-factor_lineal
+factor_lineal<--(as.numeric(as.character(Datos$`Yield de entrada`))-as.numeric(as.character(Bono1[3,5])))/as.numeric(as.Date("2020-03-14")-as.Date("2019-03-15"))
+ShockF_1<-c(factor_lineal)
+ShockF_1<-c(ShockF_1,ShockF_1*as.numeric(fecha[-1]-fecha[-length(fecha)]))
 YAS_BOND_YLD_1 <- c(2.458612, rep(0, length(interes1_1) - 1))
-for (i in 2:length(YAS_BOND_YLD_2)) {
+for (i in 2:length(YAS_BOND_YLD_1)) {
   YAS_BOND_YLD_1[i] <- YAS_BOND_YLD_1[i - 1] + ShockF_1[i - 1]
 }
 
@@ -154,40 +155,41 @@ while (j + 180 <= as.Date("2021-02-28")) {
   j = j + 180
 }
 
-YAS_BOND_PX_2 <-
-  calculo_precio(100, 0.025, YAS_BOND_YLD_2, 2, 360, as.Date("2021-02-28"))
+YAS_BOND_PX_1 <-
+  calculo_precio(100, 0.025, YAS_BOND_YLD_1, 2, 360, as.Date("2021-02-28"))
 
-bono_2 <-
+bono_1 <-
   creacion_de_columnas(
-    interes2_1,
-    interes2_2,
-    YAS_BOND_YLD_2,
-    Gcapital_2 ,
-    ShockF_2,
-    TOTAL_2,
-    Retorno_total_2
+    interes1_1,
+    interes1_2,
+    YAS_BOND_YLD_1,
+    Gcapital_1 ,
+    ShockF_1,
+    TOTAL_1,
+    Retorno_total_1,
+    YAS_BOND_PX_1
   )
-names(bono_2) <-
+names(bono_1) <-
   c(
-    "interes2_1",
-    "interes2_2",
-    "YAS_BOND_YLD_2",
-    "Gcapital_2",
-    "ShockF_2",
-    "TOTAL_2",
-    "Retorno_total_2"
+    "interes1_1",
+    "interes1_2",
+    "YAS_BOND_YLD_1",
+    "Gcapital_1",
+    "ShockF_1",
+    "TOTAL_1",
+    "Retorno_total_1"
   )
-bono2 <-
+bono1 <-
   data.frame(
     "Fecha de evaluación" = fecha,
-    "INT_ACC 1" = bono_2$interes2_1,
-    "INT_ACC 2" = bono_2$interes2_2,
-    bono_2$YAS_BOND_YLD_2,
-    bono_2$ShockF_2,
-    YAS_BOND_PX_2,
-    bono_2$Gcapital_2,
-    bono_2$TOTAL_2,
-    bono_2$Retorno_total_2
+    "INT_ACC 1" = bono_1$interes1_1,
+    "INT_ACC 1" = bono_1$interes1_2,
+    bono_1$YAS_BOND_YLD_1,
+    bono_1$ShockF_1,
+    YAS_BOND_PX_1,
+    bono_1$Gcapital_1,
+    bono_1$TOTAL_1,
+    bono_1$Retorno_total_1
   )
 
 
@@ -231,7 +233,8 @@ bono_2 <-
     Gcapital_2 ,
     ShockF_2,
     TOTAL_2,
-    Retorno_total_2
+    Retorno_total_2,
+    YAS_BOND_PX_2
   )
 names(bono_2) <-
   c(
@@ -305,7 +308,8 @@ bono_3 <-
     Gcapital_3 ,
     ShockF_3,
     TOTAL_3,
-    Retorno_total_3
+    Retorno_total_3,
+    YAS_BOND_PX_3
   )
 names(bono_3) <-
   c(
@@ -371,7 +375,8 @@ bono_4 <-
     Gcapital_4 ,
     ShockF_4,
     TOTAL_4,
-    Retorno_total_4
+    Retorno_total_4,
+    YAS_BOND_PX_4
   )
 names(bono_4) <-
   c(

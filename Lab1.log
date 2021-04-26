@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.26)  26 APR 2021 11:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.26)  26 APR 2021 16:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -558,7 +558,8 @@ d-pdftex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count302
 \l__pdf_internal_box=\box68
-) (./Lab1.aux)
+)
+No file Lab1.aux.
 \openout1 = `Lab1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
@@ -610,7 +611,6 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 124.
 LaTeX Info: Redefining \pageref on input line 124.
 LaTeX Info: Redefining \nameref on input line 124.
-(./Lab1.out) (./Lab1.out)
 \@outlinefile=\write4
 \openout4 = `Lab1.out'.
 
@@ -684,53 +684,22 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 126
 (c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-32.
-(c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 135.
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-180.
-(c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
-File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [1
 
-{c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdfte
-x.map}] [2] [3] [4]
-Underfull \vbox (badness 10000) detected at line 401
- []
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
 
-
-Underfull \vbox (badness 10000) detected at line 401
- []
-
-[5] [6] (./Lab1.aux)
-Package rerunfilecheck Info: File `Lab1.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
- ) 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.132 
+       
 Here is how much of TeX's memory you used:
- 11907 strings out of 480954
- 174589 string characters out of 5905582
- 486255 words of memory out of 5000000
- 28894 multiletter control sequences out of 15000+600000
- 426061 words of font info for 51 fonts, out of 8000000 for 9000
+ 11807 strings out of 480954
+ 173192 string characters out of 5905582
+ 474048 words of memory out of 5000000
+ 28819 multiletter control sequences out of 15000+600000
+ 424800 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 71i,7n,74p,451b,361s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.
-enc}{c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec
-.enc}<c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/l
-mr10.pfb><c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/
-lm/lmr12.pfb><c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/pub
-lic/lm/lmr17.pfb><c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1
-/public/lm/lmtk10.pfb><c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-dist/fonts/
-type1/public/lm/lmtt10.pfb><c:/Users/saac9/AppData/Roaming/TinyTeX/texmf-dist/f
-onts/type1/public/lm/lmtti10.pfb>
-Output written on Lab1.pdf (6 pages, 152539 bytes).
-PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71i,7n,74p,238b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
 
+!  ==> Fatal error occurred, no output PDF file produced!
