@@ -5,6 +5,8 @@ date: "24/4/2021"
 output: pdf_document
 ---
 
+
+Primero se cargan los paquetes y los datos
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
@@ -14,12 +16,6 @@ library(tidyverse)
 library(lubridate)
 library(kableExtra)
 
-
-```
-
-
-Importar datos
-```{r}
 Bono1 <- read_excel("Ex1.BonoPL.xlsx",
                     col_names = FALSE)
 Bono2 <- read_excel("Ex1.BonoPL.xlsx", sheet = "Bond (2)",
@@ -29,11 +25,7 @@ Bono3 <- read_excel("Ex1.BonoPL.xlsx", sheet = "Bond (3)",
 Bono4 <- read_excel("Ex1.BonoPL.xlsx", sheet = "Bond (4)",
                     col_names = FALSE)
 
-```
 
-
-#Datos
-```{r}
 Datos <- Bono1[c(2)]
 Datos <- Datos[c(1:10),]
 Datos <- as.data.frame(t(Datos))
@@ -52,6 +44,8 @@ colnames(Datos)[1:length(Datos)] <-
   )
 
 ```
+
+
 
 #Para bono 2
 
