@@ -48,24 +48,22 @@ colnames(Datos)[1:length(Datos)] <-
 
 
 #Para bono 2
-
+Funciones que se emplean a lo largo del código
 ```{r}
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
 fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
 
 interes2_1 <- as.numeric(Bono3$...2[-c(1:15)])
 interes2_2 <- (0:(length(interes2_1) - 1))
-
-
 ShockF_2 <- rep(0, length(interes2_1))
 YAS_BOND_YLD_2 <- c(2.458612, rep(0, length(interes2_1) - 1))
 for (i in 2:length(YAS_BOND_YLD_2)) {
   YAS_BOND_YLD_2[i] <- YAS_BOND_YLD_2[i - 1] + ShockF_2[i - 1]
 }
 
-Gcapital_2 <- rep(0, length(interes2_1))
-TOTAL_2 <- rep(0, length(interes2_1))
-Retorno_total_2 <- rep(0, length(interes2_1))
+Gcapital_2 <- c(0)
+TOTAL_2 <- c(0)
+Retorno_total_2 <- c(0)
 
 
 fecha_pago <- as.Date("2019-02-28")
@@ -110,31 +108,49 @@ YAS_BOND_PX_2 <-
 
 
 ```{r}
-
-for (i in 1:(length(fecha) - 1)) {
-  if (interes2_1[i] < interes2_1[i + 1]) {
-    interes2_2[i + 1] <- interes2_2[i] + interes2_1[i + 1] - interes2_1[i]
-  } else {
-    interes2_2[i + 1] <-
-      interes2_2[i] + interes2_1[i + 1] - interes2_1[i] + as.numeric(as.character(Datos$Subcupon))
-  }#se calcula la columna de INT_ACC
-  
-  YAS_BOND_YLD_2[i + 1] <- YAS_BOND_YLD_2[i] - ShockF_2[i]
-  Gcapital_2[i + 1] <-
-    (YAS_BOND_PX_2[i + 1] - as.numeric(as.character(Datos$`Precio Compra`))) *
-    as.numeric(as.character(Datos$Monto)) / 100
-  TOTAL_2[i] <- interes2_2[i] + Gcapital_2[i]
-  Retorno_total_2[i] <-
-    TOTAL_2[i] / as.numeric(as.character(Datos$Monto)) * 100
-  if (i == (length(fecha) - 1)) {
-    TOTAL_2[i + 1] <- interes2_2[i + 1] + Gcapital_2[i + 1]
-    Retorno_total_2[i + 1] <-
-      TOTAL_2[i + 1] / as.numeric(as.character(Datos$Monto)) * 100
+creacion_de_columnas <-
+  function(interes,
+           interes2,
+           yas_bond_yld,
+           G_capital,
+           shock) {
+    for (i in 1:(length(fecha) - 1)) {
+      if (interes[i] < interes[i + 1]) {
+        interes2[i + 1] <- interes2[i] + interes[i + 1] - interes[i]
+      } else {
+        interes2[i + 1] <-
+          interes2[i] + interes[i + 1] - interes[i] + as.numeric(as.character(Datos$Subcupon))
+      }#se calcula la columna de INT_ACC
+      
+      yas_bond_yld[i + 1] <- yas_bond_yld[i] - shock[i]
+      G_capital <-
+        c(G_capital,
+          (YAS_BOND_PX_2[i + 1] - as.numeric(as.character(
+            Datos$`Precio Compra`
+          ))) *
+            as.numeric(as.character(Datos$Monto)) / 100)
+      TOTAL_2 <- c(TOTAL_2, interes2[i] + G_capital[i])
+      Retorno_total_2 <-
+        c(Retorno_total_2, TOTAL_2[i] / as.numeric(as.character(Datos$Monto)) * 100)
+      if (i == (length(fecha) - 1)) {
+        TOTAL_2 <- c(TOTAL_2, interes2[i + 1] + G_capital[i + 1])
+        Retorno_total_2 <- c(Retorno_total_2
+                             ,
+                             TOTAL_2[i + 1] / as.numeric(as.character(Datos$Monto)) * 100)
+      }
+    }
+    return(list(
+      interes,
+      interes2,
+      yas_bond_yld,
+      G_capital,
+      shock,
+      TOTAL_2,
+      Retorno_total_2
+    ))
   }
-}
-
-
-
+bono_2<-creacion_de_columnas(interes2_1,interes2_2,YAS_BOND_YLD_2,Gcapital_2 ,ShockF_2)
+names(bono_2)<-c("interes2_1","interes2_2","YAS_BOND_YLD_2,Gcapital_2","Gcapital_2","ShockF_2","TOTAL_2","Retorno_total_2")
 bono2 <-
   data.frame(
     "Fecha de evaluación" = fecha,
