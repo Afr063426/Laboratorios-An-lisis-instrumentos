@@ -1,0 +1,320 @@
+---
+title: "Joshua Cervantes y Daniel Sabater; Laboratorio 1"
+author: "Joshua Cervantes y Daniel Sabater"
+date: "24/4/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(ggplot2)
+library(readxl)
+library(tidyverse)
+library(lubridate)
+library(kableExtra)
+
+
+```
+
+
+Importar datos
+```{r}
+Bono1 <- read_excel("Ex1.BonoPL.xlsx",
+                    col_names = FALSE)
+Bono2 <- read_excel("Ex1.BonoPL.xlsx", sheet = "Bond (2)",
+                    col_names = FALSE)
+Bono3 <- read_excel("Ex1.BonoPL.xlsx", sheet = "Bond (3)",
+                    col_names = FALSE)
+Bono4 <- read_excel("Ex1.BonoPL.xlsx", sheet = "Bond (4)",
+                    col_names = FALSE)
+
+```
+
+
+#Datos
+```{r}
+Datos <- Bono1[c(2)]
+Datos <- Datos[c(1:10),]
+Datos <- as.data.frame(t(Datos))
+colnames(Datos)[1:length(Datos)] <-
+  c(
+    "ISIN",
+    "TICKER",
+    "Vencimiento",
+    "Cupón(%)",
+    "Frequencia cupón",
+    "Monto",
+    "Subcupon",
+    "Liquid (SETT)",
+    "Yield de entrada",
+    "Precio Compra"
+  )
+
+```
+
+#Para bono 2
+
+```{r}
+fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
+fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
+
+interes2_1 <- as.numeric(Bono3$...2[-c(1:15)])
+interes2_2 <- (0:(length(interes2_1) - 1))
+
+
+ShockF_2 <- rep(0, length(interes2_1))
+YAS_BOND_YLD_2 <- c(2.458612, rep(0, length(interes2_1) - 1))
+for (i in 2:length(YAS_BOND_YLD_2)) {
+  YAS_BOND_YLD_2[i] <- YAS_BOND_YLD_2[i - 1] + ShockF_2[i - 1]
+}
+
+Gcapital_2 <- rep(0, length(interes2_1))
+TOTAL_2 <- rep(0, length(interes2_1))
+Retorno_total_2 <- rep(0, length(interes2_1))
+
+
+fecha_pago <- as.Date("2019-02-28")
+j <- as.Date("2019-02-28")
+while (j + 180 <= as.Date("2021-02-28")) {
+  fecha_pago <-
+    c(fecha_pago, ceiling_date(j + 180, unit = "month") - 1)
+  j = j + 180
+}
+vectorr <- c()
+calculo_precio <-
+  function(facial, cupon, tasa, periodos, dias, final) {
+    for (i in 1:length(fecha)) {
+      if (fecha[i] - fecha_pago[1] >= fecha_pago[2] - fecha_pago[1]) {
+        fecha_pago <- fecha_pago[-1]
+      }
+      if (0 < as.numeric(final - fecha[i])) {
+        A <- as.numeric(fecha[i] - fecha_pago[1])
+        E <- dias / periodos
+        Dsc <- E - A
+        tasa_efectiva <- tasa[i] / (periodos * 100)
+        N <- length(fecha_pago) - 2
+        c <- length(fecha_pago) - c(2:length(fecha_pago))
+        cupon_p <- cupon / periodos
+        vectorr[i] <- (
+          facial * (1 + tasa_efectiva) ^ (-N - Dsc / E) + facial * cupon_p * sum((1 +
+                                                                                    tasa_efectiva) ^ (-c - Dsc / E)) - facial * cupon_p * A / E
+        )
+      } else{
+        vectorr[i] <- facial
+      }
+    }
+    
+    return(vectorr)
+  }
+YAS_BOND_PX_2 <-
+  calculo_precio(100, 0.025, YAS_BOND_YLD_2, 2, 360, as.Date("2021-02-28"))
+
+```
+
+
+
+
+```{r}
+
+for (i in 1:(length(fecha) - 1)) {
+  if (interes2_1[i] < interes2_1[i + 1]) {
+    interes2_2[i + 1] <- interes2_2[i] + interes2_1[i + 1] - interes2_1[i]
+  } else {
+    interes2_2[i + 1] <-
+      interes2_2[i] + interes2_1[i + 1] - interes2_1[i] + as.numeric(as.character(Datos$Subcupon))
+  }#se calcula la columna de INT_ACC
+  
+  YAS_BOND_YLD_2[i + 1] <- YAS_BOND_YLD_2[i] - ShockF_2[i]
+  Gcapital_2[i + 1] <-
+    (YAS_BOND_PX_2[i + 1] - as.numeric(as.character(Datos$`Precio Compra`))) *
+    as.numeric(as.character(Datos$Monto)) / 100
+  TOTAL_2[i] <- interes2_2[i] + Gcapital_2[i]
+  Retorno_total_2[i] <-
+    TOTAL_2[i] / as.numeric(as.character(Datos$Monto)) * 100
+  if (i == (length(fecha) - 1)) {
+    TOTAL_2[i + 1] <- interes2_2[i + 1] + Gcapital_2[i + 1]
+    Retorno_total_2[i + 1] <-
+      TOTAL_2[i + 1] / as.numeric(as.character(Datos$Monto)) * 100
+  }
+}
+
+
+
+bono2 <-
+  data.frame(
+    "Fecha de evaluación" = fecha,
+    "INT_ACC 1" = interes2_1,
+    "INT_ACC 2" = interes2_2,
+    YAS_BOND_YLD_2,
+    ShockF_2,
+    YAS_BOND_PX_2,
+    Gcapital_2,
+    TOTAL_2,
+    Retorno_total_2
+  )
+
+
+```
+
+
+#Bono 3
+
+
+```{r}
+fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
+fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
+
+interes3_1 <- as.numeric(Bono3$...2[-c(1:15)])
+interes3_2 <- (0:(length(interes3_1) - 1))
+
+ShockF_3 <- as.numeric(Bono3$...6[-c(1:15)])
+YAS_BOND_YLD_3 <- c(2.458612, rep(0, length(interes2_1) - 1))
+for (i in 2:length(YAS_BOND_YLD_3)) {
+  YAS_BOND_YLD_3[i] <- YAS_BOND_YLD_3[i - 1] + ShockF_3[i - 1]
+}
+
+Gcapital_3 <- rep(0, length(interes3_1))
+TOTAL_3 <- rep(0, length(interes3_1))
+Retorno_total_3 <- rep(0, length(interes3_1))
+
+
+fecha_pago <- as.Date("2019-02-28")
+j <- as.Date("2019-02-28")
+while (j + 180 <= as.Date("2021-02-28")) {
+  fecha_pago <- c(fecha_pago, ceiling_date(j + 180, unit = "month") - 1)
+  j = j + 180
+}
+vectorr <- c()
+YAS_BOND_PX_3 <-
+  calculo_precio(100, 0.025, YAS_BOND_YLD_3, 2, 360, as.Date("2021-02-28"))
+
+
+
+```
+
+
+
+
+```{r}
+for (i in 1:(length(interes3_1) - 1)) {
+  if (interes3_1[i] < interes3_1[i + 1]) {
+    interes3_2[i + 1] <-
+      interes3_2[i] + interes3_1[i + 1] - interes3_1[i]
+  } else{
+    interes3_2[i + 1] <-
+      interes3_2[i] + interes3_1[i + 1] - interes3_1[i] + as.numeric(as.character(Datos$Subcupon))
+  }#se calcula la columna de INT_ACC
+  Gcapital_3[i + 1] <-
+    (YAS_BOND_PX_3[i + 1] - as.numeric(as.character(Datos$`Precio Compra`))) *
+    as.numeric(as.character(Datos$Monto)) / 100
+  TOTAL_3[i] <- interes3_2[i] + Gcapital_3[i]
+  Retorno_total_3[i] <-
+    TOTAL_3[i] / as.numeric(as.character(Datos$Monto)) * 100
+  if (i == (length(fecha) - 1)) {
+    TOTAL_3[i + 1] <- interes3_2[i + 1] + Gcapital_3[i + 1]
+    Retorno_total_3[i + 1] <-
+      TOTAL_3[i + 1] / as.numeric(as.character(Datos$Monto)) * 100
+  }
+}
+
+
+
+bono3 <-
+  data.frame(
+    "Fecha de evaluación" = fecha,
+    "INT_ACC 1" = interes3_1,
+    "INT_ACC 2" = interes3_2,
+    YAS_BOND_YLD_3,
+    ShockF_3,
+    YAS_BOND_PX_3,
+    Gcapital_3,
+    TOTAL_3,
+    Retorno_total_3
+  )
+
+```
+
+
+#Bono 4
+
+
+```{r}
+fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
+fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
+
+interes4_1 <- as.numeric(Bono4$...2[-c(1:15)])
+interes4_2 <- (0:(length(interes4_1) - 1))
+
+ShockF_4 <- as.numeric(Bono4$...6[-c(1:15)])
+YAS_BOND_YLD_4 <- c(2.458612, rep(0, length(interes2_1) - 1))
+for (i in 2:length(YAS_BOND_YLD_4)) {
+  YAS_BOND_YLD_4[i] <- YAS_BOND_YLD_4[i - 1] + ShockF_4[i - 1]
+}
+
+Gcapital_4 <- rep(0, length(interes4_1))
+TOTAL_4 <- rep(0, length(interes4_1))
+Retorno_total_4 <- rep(0, length(interes4_1))
+
+
+fecha_pago <- as.Date("2019-02-28")
+j <- as.Date("2019-02-28")
+while (j + 180 <= as.Date("2021-02-28")) {
+  fecha_pago <- c(fecha_pago, ceiling_date(j + 180, unit = "month") - 1)
+  j = j + 180
+}
+vectorr <- c()
+YAS_BOND_PX_4 <-
+  calculo_precio(100, 0.025, YAS_BOND_YLD_4, 2, 360, as.Date("2021-02-28"))
+
+```
+
+
+
+
+```{r}
+for (i in 1:(length(interes4_1) - 1)) {
+  if (interes4_1[i] < interes4_1[i + 1]) {
+    interes4_2[i + 1] <-
+      interes4_2[i] + interes4_1[i + 1] - interes4_1[i]
+  } else{
+    interes4_2[i + 1] <-
+      interes4_2[i] + interes4_1[i + 1] - interes4_1[i] + as.numeric(as.character(Datos$Subcupon))
+  }#se calcula la columna de INT_ACC
+  Gcapital_4[i + 1] <-
+    (YAS_BOND_PX_4[i + 1] - as.numeric(as.character(Datos$`Precio Compra`))) *
+    as.numeric(as.character(Datos$Monto)) / 100
+  TOTAL_4[i] <- interes4_2[i] + Gcapital_4[i]
+  Retorno_total_4[i] <-
+    TOTAL_4[i] / as.numeric(as.character(Datos$Monto)) * 100
+  if (i == (length(fecha) - 1)) {
+    TOTAL_4[i + 1] <- interes4_2[i + 1] + Gcapital_4[i + 1]
+    Retorno_total_4[i + 1] <-
+      TOTAL_4[i + 1] / as.numeric(as.character(Datos$Monto)) * 100
+  }
+}
+
+
+
+bono4 <-
+  data.frame(
+    "Fecha de evaluación" = fecha,
+    "INT_ACC 1" = interes4_1,
+    "INT_ACC 2" = interes4_2,
+    YAS_BOND_YLD_4,
+    ShockF_4,
+    YAS_BOND_PX_4,
+    Gcapital_4,
+    TOTAL_4,
+    Retorno_total_4
+  )
+
+
+```
+
+
+
+
+
+
+
