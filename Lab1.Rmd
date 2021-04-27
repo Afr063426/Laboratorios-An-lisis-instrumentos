@@ -104,6 +104,8 @@ creacion_de_columnas <-
             Datos$`Precio Compra`
           ))) *
             as.numeric(as.character(Datos$Monto)) / 100)
+      #se calcula yas_bond_yld
+      
       TOTAL <- c(TOTAL, interes2[i] + G_capital[i])
       Retorno_total <-
         c(Retorno_total, TOTAL[i] / as.numeric(as.character(Datos$Monto)) * 100)
@@ -192,7 +194,7 @@ bono1 <-
     bono_1$Retorno_total_1
   )
 
-
+rm(bono_1)
 ```
 
 
@@ -259,7 +261,7 @@ bono2 <-
     bono_2$Retorno_total_2
   )
 
-
+rm(bono_2)
 ```
 
 
@@ -333,7 +335,7 @@ bono3 <-
     bono_3$TOTAL_3,
     bono_3$Retorno_total_3
   )
-
+rm(bono_3)
 ```
 
 
@@ -400,7 +402,7 @@ bono4 <-
     bono_4$TOTAL_4,
     bono_4$Retorno_total_4
   )
-
+rm(bono_4)
 
 ```
 
