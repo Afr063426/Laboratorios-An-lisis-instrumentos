@@ -479,7 +479,6 @@ grafico2(bono2$Fecha.de.evaluación[1:262],bono2$INT_ACC.2[1:262],bono2$TOTAL[1:
 
 
 
-
 ```
 
 
