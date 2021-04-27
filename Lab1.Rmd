@@ -400,7 +400,19 @@ bono4 <-
     bono_4$TOTAL_4,
     bono_4$Retorno_total_4
   )
-#https://github.com/Afr063426/Laboratorios-An-lisis-instrumentos
+bono5 <-
+  data.frame(
+    "Fecha de evaluación" = fecha,
+    "INT_ACC 1" = bono_4$interes4_1,
+    "INT_ACC 2" = bono_4$interes4_2,
+    bono_4$YAS_BOND_YLD_4,
+    bono_4$ShockF_4,
+    YAS_BOND_PX_4,
+    bono_4$Gcapital_4,
+    bono_4$TOTAL_4,
+    bono_4$Retorno_total_4
+  )
+
 ```
 
 
