@@ -2,10 +2,10 @@
 title: "Joshua Cervantes y Daniel Sabater; Laboratorio 1"
 author: "Joshua Cervantes y Daniel Sabater"
 date: "24/4/2021"
-output: pdf_document
+output:
+  pdf_document: default
+
 ---
-
-
 
 Primero se cargan los paquetes y los datos
 ```{r setup, include=FALSE}
@@ -403,6 +403,8 @@ bono4 <-
     bono_4$Retorno_total_4
   )
 rm(bono_4)
+
+hola
 
 ```
 
