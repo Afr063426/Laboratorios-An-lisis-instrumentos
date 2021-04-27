@@ -400,7 +400,7 @@ bono4 <-
     bono_4$TOTAL_4,
     bono_4$Retorno_total_4
   )
-bono6 <-
+bono32 <-
   data.frame(
     "Fecha de evaluación" = fecha,
     "INT_ACC 1" = bono_4$interes4_1,
