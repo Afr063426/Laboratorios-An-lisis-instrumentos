@@ -472,7 +472,7 @@ grafico2 <- function(fechas, intacum2, total, gcapital) {
   
 }
 
-grafico2(bono2$Fecha.de.evaluación[1:262],bono2$INT_ACC.2[1:262],bono2$TOTAL[1:262], bono2$Gcapital[1:262] )
+grafico2(bono2$Fecha.de.evaluación[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono2$INT_ACC.2[bono2$INT_ACC.2<=as.Date('2020-03-16')],bono2$TOTAL[bono2$TOTAL<=as.Date('2020-03-16')], bono2$Gcapital[bono2$Gcapital<=as.Date('2020-03-16')] )
 
 
 
