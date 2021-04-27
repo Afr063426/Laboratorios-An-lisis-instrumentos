@@ -7,7 +7,23 @@ output:
 
 ---
 
+**Índice** <br><br>
+1. [Introducción](#introduccion)<br>
+2. [Marco Teórico](#marcoteorico)<br>
+3. [Resultados](#resultados) <br>
+4. [Conclusi\'on](# conclusiones)
+
+<div id=id 'introduccion'/>
+
+
+En el documento que se ha proporcionado se encuentran los flujos de un bono el cuál cuenta con cupones de $2.5\%$ compuestos semestralmentes es decir se pagan dos veces al a\~no y el monto pagado es de $1.25\%$ sobre el facial, que en este caso corresponde a 100 y este tambi\'en corresponde al valor de redenci\'on. Ahora como se hab\'ia mencionado anteriormente se hacen dos pagos al a\~no en estos bonos en los 4 los pagos se realizan a final de febrero es decir 28 o 29 dependiendo de si el a\~no es bisiesto o no y los 31 de agosto. otro aspecto a tener en cuenta es que estos b\'onos est\'an calculados bajo el m\'etodo 
+\[
+\frac{\textbf{real}}{360}
+\]
+Entonces se tendr\'ia que cada per\'iodo se contabiliza como 180 d\'ias sin embargo para determinar el precio y otros aspectos que se determinan por medio de este, si emplean el tiempo real que a transcurrido desde el \'ultimo pago de cup\'on hasta la fecha actual. Se tiene que el monto es de 1000000 por lo que en cupones se debe recibir 12500 por per\'iodo.
 Primero se cargan los paquetes y los datos
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
@@ -104,8 +120,6 @@ creacion_de_columnas <-
             Datos$`Precio Compra`
           ))) *
             as.numeric(as.character(Datos$Monto)) / 100)
-      #se calcula yas_bond_yld
-      
       TOTAL <- c(TOTAL, interes2[i] + G_capital[i])
       Retorno_total <-
         c(Retorno_total, TOTAL[i] / as.numeric(as.character(Datos$Monto)) * 100)
@@ -194,7 +208,7 @@ bono1 <-
     "Retorno total (%)" = bono_1$Retorno_total_1
   )
 
-rm(bono_1)
+
 ```
 
 
@@ -261,7 +275,7 @@ bono2 <-
     "Retorno total (%)" = bono_2$Retorno_total_2
   )
 
-rm(bono_2)
+
 ```
 
 
@@ -336,7 +350,7 @@ bono3 <-
     "TOTAL" = bono_3$TOTAL_3,
     "Retorno total (%)" = bono_3$Retorno_total_3
   )
-rm(bono_3)
+
 ```
 
 
@@ -403,7 +417,6 @@ bono4 <-
     "TOTAL" = bono_4$TOTAL_4,
     "Retorno total (%)" = bono_4$Retorno_total_4
   )
-rm(bono_4)
 
 
 
@@ -440,7 +453,7 @@ grafico1 <- function(fechas, tasabono) {
   
 }
 
-grafico1(bono1$Fecha.de.evaluación[1:262],bono1$YAS_BOND_YLD[1:262])
+grafico1(bono1$Fecha.de.evaluación[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono1$YAS_BOND_YLD[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')])
 
 
 
@@ -475,8 +488,7 @@ grafico2 <- function(fechas, intacum2, total, gcapital) {
   
 }
 
-grafico2(bono2$Fecha.de.evaluación[1:262],bono2$INT_ACC.2[1:262],bono2$TOTAL[1:262], bono2$Gcapital[1:262] )
-
+grafico2(bono2$Fecha.de.evaluación[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono2$INT_ACC.2[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono2$TOTAL[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')], bono2$Gcapital[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')] )
 
 
 ```
