@@ -97,7 +97,7 @@ creacion_de_columnas <-
           interes2[i] + interes[i + 1] - interes[i] + as.numeric(as.character(Datos$Subcupon))
       }#se calcula la columna de INT_ACC
       
-      yas_bond_yld[i + 1] <- yas_bond_yld[i] - shock[i]
+      yas_bond_yld[i + 1] <- yas_bond_yld[i] + shock[i]
       G_capital <-
         c(G_capital,
           (YAS_BOND_PX[i + 1] - as.numeric(as.character(
@@ -183,13 +183,13 @@ bono1 <-
   data.frame(
     "Fecha de evaluación" = fecha,
     "INT_ACC 1" = bono_1$interes1_1,
-    "INT_ACC 1" = bono_1$interes1_2,
-    bono_1$YAS_BOND_YLD_1,
-    bono_1$ShockF_1,
-    YAS_BOND_PX_1,
-    bono_1$Gcapital_1,
-    bono_1$TOTAL_1,
-    bono_1$Retorno_total_1
+    "INT_ACC 2" = bono_1$interes1_2,
+    "YAS_BOND_YLD" = bono_1$YAS_BOND_YLD_1,
+    "ShockF." = bono_1$ShockF_1,
+    "YAS BOND PX" = YAS_BOND_PX_1,
+    "Gcapital" = bono_1$Gcapital_1,
+    "TOTAL" = bono_1$TOTAL_1,
+    "Retorno total (%)" = bono_1$Retorno_total_1
   )
 
 
@@ -251,18 +251,19 @@ bono2 <-
     "Fecha de evaluación" = fecha,
     "INT_ACC 1" = bono_2$interes2_1,
     "INT_ACC 2" = bono_2$interes2_2,
-    bono_2$YAS_BOND_YLD_2,
-    bono_2$ShockF_2,
-    YAS_BOND_PX_2,
-    bono_2$Gcapital_2,
-    bono_2$TOTAL_2,
-    bono_2$Retorno_total_2
+    "YAS_BOND_YLD" = bono_2$YAS_BOND_YLD_2,
+    "ShockF." = bono_2$ShockF_2,
+    "YAS BOND PX" = YAS_BOND_PX_2,
+    "Gcapital" = bono_2$Gcapital_2,
+    "TOTAL" = bono_2$TOTAL_2,
+    "Retorno total (%)" = bono_2$Retorno_total_2
   )
 
 
 ```
 
 
+ 
 
 
 
@@ -326,12 +327,12 @@ bono3 <-
     "Fecha de evaluación" = fecha,
     "INT_ACC 1" = bono_3$interes3_1,
     "INT_ACC 2" = bono_3$interes3_2,
-    bono_3$YAS_BOND_YLD_3,
-    bono_3$ShockF_3,
-    YAS_BOND_PX_3,
-    bono_3$Gcapital_3,
-    bono_3$TOTAL_3,
-    bono_3$Retorno_total_3
+    "YAS_BOND_YLD" = bono_3$YAS_BOND_YLD_3,
+    "ShockF." = bono_3$ShockF_3,
+    "YAS BOND PX" = YAS_BOND_PX_3,
+    "Gcapital" = bono_3$Gcapital_3,
+    "TOTAL" = bono_3$TOTAL_3,
+    "Retorno total (%)" = bono_3$Retorno_total_3
   )
 
 ```
@@ -393,21 +394,90 @@ bono4 <-
     "Fecha de evaluación" = fecha,
     "INT_ACC 1" = bono_4$interes4_1,
     "INT_ACC 2" = bono_4$interes4_2,
-    bono_4$YAS_BOND_YLD_4,
-    bono_4$ShockF_4,
-    YAS_BOND_PX_4,
-    bono_4$Gcapital_4,
-    bono_4$TOTAL_4,
-    bono_4$Retorno_total_4
+    "YAS_BOND_YLD" = bono_4$YAS_BOND_YLD_4,
+    "ShockF." = bono_4$ShockF_4,
+    "YAS BOND PX" = YAS_BOND_PX_4,
+    "Gcapital" = bono_4$Gcapital_4,
+    "TOTAL" = bono_4$TOTAL_4,
+    "Retorno total (%)" = bono_4$Retorno_total_4
   )
 
-hola
+
+
+```
+
+
+
+     
+    
+     
+
+
+
+
+Función para graficar
+
+```{r}
+
+grafico1 <- function(fechas, tasabono) {
+  
+  ggplot(
+    data =data.frame(fechas, tasabono),
+    mapping = aes(
+      x = fechas,
+      y = tasabono)
+  ) +
+    geom_line() +
+    labs(
+      y = "Interés del Bono",
+      x = "Tiempo",
+      title = "Interés del bono a través del tiempo"
+    ) +
+    theme(plot.title = element_text(hjust = .5))# colocamos el titulo en el centro
+  
+}
+
+grafico1(bono1$Fecha.de.evaluación[1:262],bono1$YAS_BOND_YLD[1:262])
+
+
+
 
 ```
 
 
 
 
+
+
+
+
+```{r}
+grafico2 <- function(fechas, intacum2, total, gcapital) {
+  
+  ggplot(
+    data =data.frame(fechas, intacum2, total, gcapital),
+    mapping = aes(
+      x = fechas,
+      y = total)
+     ) +
+    geom_line(aes(x = fechas , y=intacum2),color="red") +
+    geom_line(aes(x = fechas , y=total), color="green") +
+    geom_line(aes(x = fechas , y=gcapital),color="blue") +
+    labs(
+      y = "Interés del Bono",
+      x = "Tiempo",
+      title = "Interés del bono a través del tiempo"
+    ) +
+    theme(plot.title = element_text(hjust = .5))# colocamos el titulo en el centro
+  
+}
+
+grafico2(bono2$Fecha.de.evaluación[1:262],bono2$INT_ACC.2[1:262],bono2$TOTAL[1:262], bono2$Gcapital[1:262] )
+
+
+
+
+```
 
 
 
