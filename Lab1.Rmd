@@ -194,7 +194,7 @@ grafico1 <- function(fechas, tasabono) {
     labs(
       y = "Interés del Bono",
       x = "Tiempo",
-      title = "Interés del bono a través del tiempo"
+      title = "Comportamiento del interés"
     ) + 
     theme(plot.title = element_text(hjust = .5))# colocamos el titulo en el centro
   
@@ -203,16 +203,17 @@ grafico1 <- function(fechas, tasabono) {
 grafico2 <- function(fechas,`Interes acumulado 2` , total, gcapital) {
   
   Datosgra<-data.frame(fechas, `Interes acumulado 2`, total, gcapital)
-  Datosgra<-gather(Datosgra, Obsevaciones, obtenido , names(Datosgra[2]):names(Datosgra[length(Datosgra)]))
+  Datosgra<-gather(Datosgra, Observ, obtenido , names(Datosgra[2]):names(Datosgra[length(Datosgra)]))
   
-  ggplot( data =Datosgra, mapping = aes(x = fechas, y = obtenido, group=Obsevaciones, color=Obsevaciones)) + 
+  ggplot( data =Datosgra, mapping = aes(x = fechas, y = obtenido, group=Observ, color=Observ)) + 
     geom_line()+
-    scale_color_discrete(labels=c("Ganancia de capital", "Interés acumulado 2", "Total"))+
+    scale_color_discrete(labels=c("G.C", "IA 2", "Total"))+
       labs(
       y = "Monto",
       x = "Tiempo",
-      title = "Comportamiento del bono a través tiempo" ) +
-    
+      title = "Comportamiento del bono"
+      ) +
+    theme(legend.position="bottom")+
     theme(plot.title = element_text(hjust = .5))# colocamos el titulo en el centro
   
 }
@@ -221,9 +222,8 @@ grafico2 <- function(fechas,`Interes acumulado 2` , total, gcapital) {
 
 
 
+\subsection{Análisis del bono 1}
 
-
-#Para bono 1
 ```{r, echo=FALSE}
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
 fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
@@ -292,15 +292,14 @@ rm(bono_1)
 
 ```
 
-```{r, echo=FALSE}
-
+```{r, include = FALSE}
 grafico1(bono1$Fecha.de.evaluación[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')],bono1$YAS_BOND_YLD[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')])
 
 grafico2(bono1$Fecha.de.evaluación[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')],bono1$INT_ACC.2[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')],bono1$TOTAL[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')], bono1$Gcapital[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')] )
 
 ```
 
-```{r,echo=FALSE}
+```{r, fig.width=3, fig.height=2.5, echo=FALSE}
 
 grafico1(bono1$Fecha.de.evaluación,bono1$YAS_BOND_YLD)
 grafico2(bono1$Fecha.de.evaluación,bono1$INT_ACC.2,bono1$TOTAL,bono1$Gcapital)
@@ -308,7 +307,9 @@ grafico2(bono1$Fecha.de.evaluación,bono1$INT_ACC.2,bono1$TOTAL,bono1$Gcapital)
 ```
 
 
-#Para bono 2
+
+\subsection{Análisis del bono 2}
+
 ```{r,echo=FALSE}
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
 fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
@@ -374,7 +375,10 @@ bono2 <-
 rm(bono_2)
 ```
 
-```{r, echo=FALSE}
+
+
+
+```{r, include = FALSE}
 
 grafico1(bono2$Fecha.de.evaluación[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono2$YAS_BOND_YLD[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')])
 
@@ -382,14 +386,15 @@ grafico2(bono2$Fecha.de.evaluación[bono2$Fecha.de.evaluación<=as.Date('2020-03
 
 ```
 
-```{r Grafico del bono 2, fig.show='show'}
+```{r, fig.width=3, fig.height=2.5, echo=FALSE}
 
 grafico1(bono2$Fecha.de.evaluación,bono2$YAS_BOND_YLD)
+
 grafico2(bono2$Fecha.de.evaluación,bono2$INT_ACC.2,bono2$TOTAL,bono2$Gcapital)
 
 ```
 
-#Bono 3
+\subsection{Análisis del bono 3}
 
 
 ```{r, echo=FALSE}
@@ -459,7 +464,7 @@ rm(bono_3)
 
 ```
 
-```{r, echo=FALSE}
+```{r, include = FALSE}
 
 grafico1(bono3$Fecha.de.evaluación[bono3$Fecha.de.evaluación<=as.Date('2020-03-16')],bono3$YAS_BOND_YLD[bono3$Fecha.de.evaluación<=as.Date('2020-03-16')])
 
@@ -467,14 +472,14 @@ grafico2(bono3$Fecha.de.evaluación[bono3$Fecha.de.evaluación<=as.Date('2020-03
 
 ```
 
-```{r, echo=FALSE}
+```{r, fig.width=3, fig.height=2.5, echo=FALSE}
 
 grafico1(bono3$Fecha.de.evaluación,bono3$YAS_BOND_YLD)
 grafico2(bono3$Fecha.de.evaluación,bono3$INT_ACC.2,bono3$TOTAL,bono3$Gcapital)
 
 ```
 
-#Bono 4
+\subsection{Análisis del bono 4}
 
 
 ```{r, echo=FALSE}
@@ -541,13 +546,13 @@ rm(bono_4)
 
 ```
 
-```{r, echo=FALSE}
+```{r, include = FALSE}
 
 grafico1(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$YAS_BOND_YLD[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')])
 grafico2(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$INT_ACC.2[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$TOTAL[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')], bono4$Gcapital[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')] )
 ```
 
-```{r, echo=FALSE}
+```{r, fig.width=3, fig.height=2.5, echo=FALSE}
 
 grafico1(bono4$Fecha.de.evaluación,bono4$YAS_BOND_YLD)
 grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
