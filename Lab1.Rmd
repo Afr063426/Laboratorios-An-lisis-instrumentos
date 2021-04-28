@@ -55,15 +55,20 @@ Se tiene que la fórmula del factor viene dada por
 \[
 s=-\frac{f_{0}-f_{1}}{l}
 \]
-Donde $f_{0}$ es la tasa de descuento vigente con la que se adquirido el bono mientras la tasa $f_1$ que estará vigente dentro de una año, y $l$ es la cantidad de días que hay entre el día que se adquirió a hasta dentro de un año. Se tiene que esta representa la forma en que se distribuye por día la disminución en la tasa de descuento. Esto sirve para medir a su vez la sensibilidad que tiene el precio del bono ante un shock es decir aumento o disminución de la tasa. Cabe destacar que se pueden crear portafolios los cuales sean capaces evitar por decirlo de cierta forma ciertos shocks.
+\par Donde $f_{0}$ es la tasa de descuento vigente con la que se adquirido el bono mientras la tasa $f_1$ que estará vigente dentro de una año, y $l$ es la cantidad de días que hay entre el día que se adquirió a hasta dentro de un año. Se tiene que esta representa la forma en que se distribuye por día la disminución en la tasa de descuento. Esto sirve para medir a su vez la sensibilidad que tiene el precio del bono ante un shock es decir aumento o disminución de la tasa. Cabe destacar que se pueden crear portafolios los cuales sean capaces evitar por decirlo de cierta forma ciertos shocks.
 \par Una alternativa a este modelo es el de la aproximación mediante la curva de rendimiento CMT y el Spread de Merril Lynch, este método es empleado en países donde no se cuente con curva soberana, esta refleja cómo se espera que se comporte el mercado en un período determinado. Costa Rica sí cuenta con una Curva de rendimiento soberana.
 \par En el método de CMT (Constant Maturity Treasury) más Spread de Merrill Lynch se determina el rendimiento de acuerdo a la curva de rendimiento CMT es similar a lo que se presenta en el trabajo sin embargo al valor obtenido con esta curva de rendimiento se le suma el Spread de Merrill Lynch.
 \[
 s_i=\frac{l_2s_1+l_1s_2}{l}+s_m
 \]
 \par $l_2$ es la cantidad de días entre el vencimiento del bono y el punto hasta el que se quiere determinar el precio, $l_1$ es la cantidad de días entre el vencimiento del bono y el primer punto a partir del cual se quiere determinar los precios, $l$ es la cantidad de días entre el primer día a partir del cual se quiere determinar y el días hasta que se desea determinar los precios, $s_{1,2}$ es la tasa de rendimiento asociada según la curva CMT y $s_m$ es el Spread de Merrill Lynch. Otro metodo es la aproximación mediante extrapolación polinomial cuadrática, para puntos fuera de un intervalo.
+
 \section{Resultados}
-\par En la presente sección se trabajara con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2).
+
+\par En la presente sección se trabajara con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2), esto por motivos practicos a la hora de desarrollar el cuerpo del trabajo. 
+
+\par Es bueno tener en cuenta la relación para las variables presentadas, el cambio en el interés me afecta indirectamente la ganancia o pérdida de capital, la cual a su vez me afecta el total de una manera directa, esto por la relación que guardan las fórmulas utilizadas. Cabe resaltar que el Interés acumulado 2 es el mismo para todos los escenarios, por lo descrito en el marco teórico y a su vez tanto los valores iniciales como los finales son iguales en todos los escenarios.
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,fig.width=3, fig.height=3)
 
@@ -303,6 +308,11 @@ grafico1(bono1$Fecha.de.evaluación,bono1$YAS_BOND_YLD)
 grafico2(bono1$Fecha.de.evaluación,bono1$INT_ACC.2,bono1$TOTAL,bono1$Gcapital)
 
 ```
+\par Como se puede observar se tiene una caída lineal del interés del bono con el paso del tiempo, lo que se refleja en un comportamiento cóncavo para la ganancia de capital, lo que influye en el mismo comportamiento del total.
+
+
+
+
 
 
 
@@ -392,6 +402,11 @@ grafico2(bono2$Fecha.de.evaluación,bono2$INT_ACC.2,bono2$TOTAL,bono2$Gcapital)
 
 ```
 
+Se aprecia un interés constante durante todo el periodo lo que me genera un Ganancia de capital decreciente, por el paso del tiempo, de una manera lineal y de mínima variación, lo que afecta de la misma manera al Total.
+
+
+
+
 \subsection{Análisis del bono 3}
 
 
@@ -477,6 +492,9 @@ grafico2(bono3$Fecha.de.evaluación,bono3$INT_ACC.2,bono3$TOTAL,bono3$Gcapital)
 
 ```
 
+Se puede observar un comportamiento igual al bono 2 hasta la caída abrupta del interés de doscientos puntos porcentuales, esta situación genera un efecto contrario en la ganancia del capital, la cual aumenta cerca de veintitrés mil, misma situación que ocurre con el total. El comportamiento de estos dos después del alza es opuesto, puesto que, ahora la ganancia de capital decrece constantemente, pero con una gran pendiente, mientras que el total aumenta paulatinamente.
+
+
 \subsection{Análisis del bono 4}
 
 
@@ -556,6 +574,9 @@ grafico1(bono4$Fecha.de.evaluación,bono4$YAS_BOND_YLD)
 grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
 
 ```
+
+Con este bono apreciamos el supuesto contrario del caso anterior, un drástico aumento de doscientos puntos porcentuales en la tasa de interés del bono. Lo anterior genera una caída de cerca de veintitrés mil en la ganancia de capital, así por el mismo monto en el total. Ahora su recuperación hacia los valores finales es llevada a cabo por una creciente ganancia de capital y una pendiente un poco más drástica en lo que respecta al total.
+
 \section{Conclusión}
 
 \newpage\section{Referencias}
