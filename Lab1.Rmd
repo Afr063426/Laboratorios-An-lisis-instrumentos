@@ -4,6 +4,7 @@ author: "Joshua Cervantes y Daniel Sabater"
 date: "24/4/2021"
 output:
   pdf_document: default
+indent: true
 
 ---
 \tableofcontents
@@ -58,16 +59,16 @@ Entonces se tendría que cada período se contabiliza como 180 días sin embargo
     \]
 \end{itemize}
 \section{Adicional}
-Se tiene que la fórmula el shock viene dada por 
+Se tiene que la fórmula del factor viene dada por 
 \[
 s=-\frac{f_{0}-f_{1}}{l}
 \]
 Donde $f_{0}$ es la tasa de descuento vigente con la que se adquirido el bono mientras la tasa $f_1$ que estará vigente dentro de una año, y $l$ es la cantidad de días que hay entre el día que se adquirió a hasta dentro de un año. Se tiene que esta representa la forma en que se distribuye por día la disminución en la tasa de descuento. Esto sirve para medir a su vez la sensibilidad que tiene el precio del bono ante un shock es decir aumento o disminución de la tasa. Cabe destacar que se pueden crear portafolios los cuales sean capaces evitar por decirlo de cierta forma ciertos shocks.
-
+\par Una alternativa a este modelo de un factor basado en las tasas esperadas y actuales es el modelo de los tres factores. El cual su explicación se escapa un poco del nivel de este informe.
 \section{Resultados}
 \par En la presente sección se trabajara con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2).
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,fig.width=3, fig.height=3)
 
 library(ggplot2)
 library(readxl)
@@ -549,9 +550,7 @@ rm(bono_4)
 ```{r, include = FALSE}
 
 grafico1(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$YAS_BOND_YLD[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')])
-
 grafico2(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$INT_ACC.2[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$TOTAL[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')], bono4$Gcapital[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')] )
-
 ```
 
 ```{r, fig.width=3, fig.height=2.5, echo=FALSE}
@@ -562,4 +561,6 @@ grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
 ```
 \section{Conclusión}
 
-
+\newpage\section{Referencias}
+Litterman, R. & Scheinkman, J. (1991) \textit{Common factors affecting bond returns}. Recuperado de https://www.math.nyu.edu/faculty/avellane/Litterman1991.pdf
+Fama, E. & Frenc K. (1992). Common risks factors in the returns on stocks and bonds. Recuperado de https://rady.ucsd.edu/faculty/directory/valkanov/pub/classes/mfe/docs/fama_french_jfe_1993.pdf
