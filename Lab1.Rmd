@@ -148,7 +148,7 @@ creacion_de_columnas <-
 grafico1 <- function(fechas, tasabono) {
   
   ggplot( data = data.frame(fechas, tasabono), mapping = aes(x = fechas,  y = tasabono) ) +
-    geom_line() +
+    geom_line(color="blue") +
     labs(
       y = "Interés del Bono",
       x = "Tiempo",
@@ -165,7 +165,7 @@ grafico2 <- function(fechas,`Interes acumulado 2` , total, gcapital) {
   
   ggplot( data =Datosgra, mapping = aes(x = fechas, y = obtenido, group=Obsevaciones, color=Obsevaciones)) + 
     geom_line()+
-    scale_color_discrete(labels=c("Ganancia de capital", "Interés acumulado", "Total"))+
+    scale_color_discrete(labels=c("Ganancia de capital", "Interés acumulado 2", "Total"))+
       labs(
       y = "Monto",
       x = "Tiempo",
@@ -340,7 +340,7 @@ grafico2(bono2$Fecha.de.evaluación[bono2$Fecha.de.evaluación<=as.Date('2020-03
 
 ```
 
-```{r}
+```{r, fig.show='show'}
 
 grafico1(bono2$Fecha.de.evaluación,bono2$YAS_BOND_YLD)
 grafico2(bono2$Fecha.de.evaluación,bono2$INT_ACC.2,bono2$TOTAL,bono2$Gcapital)
