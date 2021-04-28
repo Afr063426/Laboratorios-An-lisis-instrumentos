@@ -65,7 +65,7 @@ s_i=\frac{l_2s_1+l_1s_2}{l}+s_m
 \section{Resultados}
 \par En la presente sección se trabajara con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2).
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,fig.width=3, fig.height=3)
+knitr::opts_chunk$set(echo = FALSE,fig.width=3, fig.height=3)
 
 library(ggplot2)
 library(readxl)
