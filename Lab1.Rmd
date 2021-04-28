@@ -6,50 +6,58 @@ output:
   pdf_document: default
 
 ---
-
+\tableofcontents
+\newpage
 \section{Introducción}
-En el documento que se ha proporcionado se encuentran los flujos de un bono el cuál cuenta con cupones de $2.5\%$ compuestos semestralmentes es decir se pagan dos veces al año y el monto pagado es de $1.25\%$ sobre el facial, que en este caso corresponde a 100 y este también corresponde al valor de redención. Ahora como se había mencionado anteriormente se hacen dos pagos al año en estos bonos en los 4 los pagos se realizan a final de febrero es decir 28 o 29 dependiendo de si el año es bisiesto o no y los 31 de agosto. otro aspecto a tener en cuenta es que estos bonos están calculados bajo el método 
+En el documento que se ha proporcionado se encuentran los flujos de un bono el cuál cuenta con cupones de $2.5\%$ compuestos semestralmentes es decir se pagan dos veces al año y el monto pagado es de $1.25\%$ sobre el facial, que en este caso corresponde a 100 y este también corresponde al valor de redención. Ahora como se había mencionado anteriormente se hacen dos pagos al año en estos bonos en los 4 los pagos se realizan a final de febrero es decir 28 o 29 dependiendo de si el año es bisiesto o no y los 31 de agosto. Otro aspecto a tener en cuenta es que estos bonos están calculados bajo el método 
 \[
 \frac{\textbf{real}}{360}
 \]
 Entonces se tendría que cada período se contabiliza como 180 días sin embargo para determinar el precio y otros aspectos que se determinan por medio de este, si emplean el tiempo real que a transcurrido desde el último pago de cupón hasta la fecha actual. Se tiene que el monto es de 1000000 por lo que en cupones se debe recibir 12500 por período.
 \section{Marco Teórico}
   Se procede a hacer una breve descripción matemática de lo que se encuentra en cada columna
-En la primera columna encontramos que lo que se está haciendo es un cálculo de un sub cupón y cuánto de este se ha ganado, el límite que se coloca es de 12500 que es el valor ganado en cupones valorado a partir de 1000000 y una tasa de cupón de $2.5\%$ semestral, en este caso la valoración se hace de acuerdo al método real/real. Matemticamente
+\begin{itemize}
+\item En la primera columna se encontra que se está haciendo el cálculo de un sub cupón y cuánto de este se ha ganado, esto es si se tiene un millón en bonos cuanto se gana en cupones
     \[
     C(l,d)= F\cdot\frac{l}{d}\cdot \frac{C}{m}
     \]
-  Donde $l$ es la cantidad de tiempo que a transcurrido desde el pago del último cupón, $d$ es la cantidad de días que deben transcurrir entre el último pago de cupón y el siguiente pago de cupón, $F$ es el facial en este caso es $100$, pero se tiene 1000000 que es equivalente a tener 1000 bonos por lo que se emplea $F=1000000$, $C$ es el porcentaje de cupón y $m$ es la cantidad de períodos en un a\~no o lo que es lo mismo la cantidad de pagos que se hacen al a\~no.
- Ahora en la segunda columna lo que se encuentra es el monto ganado en un día correspondiente al cupón, esto es la diferencia entre el monto que se tenía ganado hasta el día anterior menos el monto que se tiene ganado hasta el día de hoy i.e.
+  Donde $l$ es la cantidad de tiempo que a transcurrido desde el pago del último cupón, $d$ es la cantidad de días que deben transcurrir entre el último pago de cupón y el siguiente pago de cupón, $F$ es el facial en este caso es $100$, pero se tiene 1000000 que es equivalente a tener 1000 bonos por lo que se emplea $F=1000000$, $C$ es el porcentaje de cupón y $m$ es la cantidad de períodos en un año o lo que es lo mismo la cantidad de pagos que se hacen al año.
+ \item Ahora en la segunda columna lo que se encuentra es el monto ganado en un día correspondiente al cupón, esto es la diferencia entre el monto que se tenía ganado hasta el día anterior menos el monto que se tiene ganado hasta el día de hoy i.e.
     \[
-    C(l+1,d)-B_{l,d}
+    C(l+1,d)-C(l,d)
     \]
-    Después se encuentra la columna que corresponde a la tasa de descuento, se ve directamente afectada por los shocks. En este caso se tiene que el para el bono hay múltiples shocks que su cálculo posteriormente se explicará. Esta tasa permite saber cuánto se está ganando por mantener el dinero invertido en el bono y permite hacer valoraciones del dinero a través del tiempo. En este caso se denotará por 
+    \item Después se encuentra la columna que corresponde a la tasa de descuento, se ve directamente afectada por los shocks. En este caso se tiene que el para el bono hay múltiples shocks que su cálculo posteriormente se explicará. Esta tasa permite saber cuánto se está ganando por mantener el dinero invertido en el bono y permite hacer valoraciones del dinero a través del tiempo. En este caso se denotará por 
     \[
-    i^(m)
+    i^{m}
     \]
-    Donde $m$ resprensenta la cantidad de períodos e $i$ es la tasa anual pero compuesta de acuerdo a ese período.
-    Como se dijo anteriormente el cómo determinar los shocks se explicará más adelante, y se tiene que para el caso del bono 3 se tiene una perdida de 200 pp lo que hace que la tasa de descuento dismuya y hace que el precio del bono aumente de manera abrupta, por otro lado se tiene que en el bono 4 aumenta en 200 pp que hace el precio del bono disminuya de forma abrupta.
-    Posteriormente se encuentra la columna de precio que en ella se encuentra el precio del bono a una fecha determinada se tiene que matemáticamente esto es
+    Donde $m$ respresenta la cantidad de períodos e $i$ es la tasa anual pero compuesta de acuerdo a ese período.
+    Se tiene que para el caso del bono 3 se tiene una perdida de 200 pp lo que hace que la tasa de descuento dismuya y hace que el precio del bono aumente de manera abrupta, por otro lado se tiene que en el bono 4 aumenta en 200 pp que hace el precio del bono disminuya de forma abrupta.
+  \item   Posteriormente se encuentra la columna de precio que en ella se encuentra el precio del bono a una fecha determinada
     \[
-    P(n,l)=F\frac{C}{m}\sum_{k=1}^n\frac{1}{\left(1+\frac{i^{(m)}}{m}\right)^{n-k+\frac{d-l}{d}}}+\frac{M}{\left(1+\frac{i^{(m)}}{m}\right)^{n-k+\frac{d-l}{d}}}-F\frac{Cl}{md}
+    P(n,l)=\begin{cases}
+    F\frac{C}{m}\sum_{k=1}^n\frac{1}{\left(1+\frac{i^{(m)}}{m}\right)^{n-k+\frac{d-l}{d}}}+\frac{M}{\left(1+\frac{i^{(m)}}{m}\right)^{n-k+\frac{d-l}{d}}}-R\frac{Cl}{md}& n>1\\ 
+    \frac{\frac{FC}{m}+R}{\frac{i^{(m)}}{m}\cdot\frac{d-l}{d}+1}-\frac{FC}{m}\cdot\frac{l}{d} & n=1
+    \end{cases}
     \]
-    Esto es lo que se conoce como precio limpio (clean price) y lo que hace es descontar el monto del cupón acumulado hasta esta fecha.
-    Se escribe en forma de sumatoría ya que se quiere saber el precio durante el transcurso de los períodos no en períodos espec\'ficos. Se tiene que lo que se hace es traer al valor presente los flujos en este caso los cupupone que son la tasa cupón $C$ por el facial $F$  y dividido entre la frecuencia $m$ y el valor de rendención que es $M$, se tiene que $i^{(m)}$ la tasa de rendimiento, $m$ el número de períodos y $n$ el número de cupones que hacen falta para que venza el bono. Se tiene que se le resta el monto adquirido del cupón del período es decir $F\frac{Cl}{md}$, esto para no contabilizar el monto del cupón adquirido hasta esa fecha.
-    Se tiene que $d$ son las cantidad de días que han transcurrido desde el pago del último cupón, $d-l$ es la cantidad de días que faltan para que se haga el pago y $d$ es la cantida de días que se supone tiene un período. Cabe destacar que muchas de estas variables son establecidad a conveniencia despendiendo de lo que se establecido como la estructura del bono, por ejemplo se podría emplear el método 360/360 o real/real que afecta la estructura de lo anterioermente mostrado.
-     Esta representa la ganancia o perdida que se está teniendo cada día por el monto invertido en bonos en este caso $1000000$ matemat\'ticamente
+    \par Esto es lo que se conoce como precio limpio (clean price) y lo que hace es descontar el monto del cupón acumulado hasta esta fecha.
+    \par Se escribe en forma de sumatoría ya que se quiere saber el precio durante el transcurso de los períodos no en períodos espec\'ficos. Se tiene que lo que se hace es traer al valor presente los flujos en este caso el valore de rendención y los cupones que son la tasa cupón $C$ por el facial $F$  y dividido entre la frecuencia $m$ y el valor de rendención que es $M$, se tiene que $i^{(m)}$ la tasa de rendimiento, $m$ el número de períodos y $n$ el número de cupones que hacen falta para que venza el bono. Se tiene que se le resta el monto adquirido del cupón del período es decir $F\frac{Cl}{md}$, esto para no contabilizar el monto del cupón adquirido hasta esa fecha.
+    \par Se tiene que $d$ son las cantidad de días que han transcurrido desde el pago del último cupón, $d-l$ es la cantidad de días que faltan para que se haga el pago y $d$ es la cantida de días que se supone tiene un período. Cabe destacar que muchas de estas variables son establecidad a conveniencia despendiendo de lo que se establecido como la estructura del bono, por ejemplo se podría emplear el método 360/360 o real/real que afecta la estructura de lo anterioermente mostrado.
+    \par Hay que tener
+     \item Esta representa la ganancia o perdida que se está teniendo cada día por el monto invertido en bonos en este caso $1000000$ matemat\'ticamente
     \[
     G=\frac{Inv*(P(n,l)-P_0)}{100}
     \]
     Donde $Inv$ es la cantidad que se invirtió en bonos, $P(n,l)$ el precio que tiene el bono a ese momento y $P_0$ el precio al que se adquirió.
-     Se encuentra que la columna de total, que representa el valor real que tiene para el due\~no que toma en cuenta el costo que tuvo el bono.
+     \item Se encuentra que la columna de total, que representa el valor real que tiene para el dueñoo que toma en cuenta el costo que tuvo el bono.
     \[
     T=P(n,l)-G
     \]
-     Y final se encuentra la columna de retorno total que representa el retorno total que se tiene hasta esa fecha por haber comprado el bono a ese precio
+    \par Y final se encuentra la columna de retorno total que representa el retorno total que se tiene hasta esa fecha por haber comprado el bono a ese precio
     \[
     \frac{T}{100P_0}
     \]
+\end{itemize}
+\section{Resultados}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
@@ -539,3 +547,5 @@ grafico1(bono4$Fecha.de.evaluación,bono4$YAS_BOND_YLD)
 grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
 
 ```
+\section{Conclusión}
+
