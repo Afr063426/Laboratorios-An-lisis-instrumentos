@@ -63,7 +63,7 @@ colnames(Datos)[1:length(Datos)] <-
 ```
 
 #Funciones que se van a emplear
-```{r, include=FALSE}
+```{r}
 vectorr <- c()
 calculo_precio <-
   function(facial, cupon, tasa, periodos, dias, final) {
@@ -182,7 +182,7 @@ grafico2 <- function(fechas,`Interes acumulado 2` , total, gcapital) {
 
 
 #Para bono 1
-```{r, include=FALSE}
+```{r}
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
 fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
 
@@ -267,7 +267,7 @@ grafico2(bono1$Fecha.de.evaluación,bono1$INT_ACC.2,bono1$TOTAL,bono1$Gcapital)
 
 
 #Para bono 2
-```{r, include=FALSE}
+```{r}
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
 fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
 
@@ -350,7 +350,7 @@ grafico2(bono2$Fecha.de.evaluación,bono2$INT_ACC.2,bono2$TOTAL,bono2$Gcapital)
 #Bono 3
 
 
-```{r, include=FALSE}
+```{r}
 
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
 fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
@@ -435,7 +435,7 @@ grafico2(bono3$Fecha.de.evaluación,bono3$INT_ACC.2,bono3$TOTAL,bono3$Gcapital)
 #Bono 4
 
 
-```{r, include=FALSE}
+```{r}
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
 fecha <- fecha[1 < wday(fecha) & wday(fecha) < 7]
 
@@ -499,22 +499,7 @@ rm(bono_4)
 
 ```
 
-<<<<<<< HEAD
 ```{r}
-=======
-
-
-     
-    
-     
-
-
-
-
-Función para graficar
-
-```{r, include=FALSE}
->>>>>>> ece5546f75023f6542b23382bd7a9000eebc2b8d
 
 grafico1(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$YAS_BOND_YLD[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')])
 
@@ -522,40 +507,7 @@ grafico2(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03
 
 ```
 
-<<<<<<< HEAD
 ```{r}
-=======
-
-
-
-
-
-
-
-```{r, include=FALSE}
-grafico2 <- function(fechas, intacum2, total, gcapital) {
-  
-  ggplot(
-    data =data.frame(fechas, intacum2, total, gcapital),
-    mapping = aes(
-      x = fechas,
-      y = total)
-     ) +
-    geom_line(aes(x = fechas , y=intacum2),color="red") +
-    geom_line(aes(x = fechas , y=total), color="green") +
-    geom_line(aes(x = fechas , y=gcapital),color="blue") +
-    labs(
-      y = "Interés del Bono",
-      x = "Tiempo",
-      title = "Interés del bono a través del tiempo"
-    ) +
-    theme(plot.title = element_text(hjust = .5))# colocamos el titulo en el centro
-  
-}
-
-grafico2(bono2$Fecha.de.evaluación[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono2$INT_ACC.2[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono2$TOTAL[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')], bono2$Gcapital[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')] )
-
->>>>>>> ece5546f75023f6542b23382bd7a9000eebc2b8d
 
 grafico1(bono4$Fecha.de.evaluación,bono4$YAS_BOND_YLD)
 grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
