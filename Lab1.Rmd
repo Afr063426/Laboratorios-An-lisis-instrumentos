@@ -1,5 +1,5 @@
 ---
-title: "Joshua Cervantes y Daniel Sabater; Laboratorio 1"
+title: "Laboratorio 1"
 author: "Joshua Cervantes y Daniel Sabater"
 date: "24/4/2021"
 output:
@@ -7,15 +7,13 @@ output:
 
 ---
 
-\begin{document}
-Introducción
+\section{Introducción}
 En el documento que se ha proporcionado se encuentran los flujos de un bono el cuál cuenta con cupones de $2.5\%$ compuestos semestralmentes es decir se pagan dos veces al año y el monto pagado es de $1.25\%$ sobre el facial, que en este caso corresponde a 100 y este también corresponde al valor de redención. Ahora como se había mencionado anteriormente se hacen dos pagos al año en estos bonos en los 4 los pagos se realizan a final de febrero es decir 28 o 29 dependiendo de si el año es bisiesto o no y los 31 de agosto. otro aspecto a tener en cuenta es que estos bonos están calculados bajo el método 
 \[
 \frac{\textbf{real}}{360}
 \]
 Entonces se tendría que cada período se contabiliza como 180 días sin embargo para determinar el precio y otros aspectos que se determinan por medio de este, si emplean el tiempo real que a transcurrido desde el último pago de cupón hasta la fecha actual. Se tiene que el monto es de 1000000 por lo que en cupones se debe recibir 12500 por período.
-
-Marco Teórico
+\section{Marco Teórico}
   Se procede a hacer una breve descripción matemática de lo que se encuentra en cada columna
 En la primera columna encontramos que lo que se está haciendo es un cálculo de un sub cupón y cuánto de este se ha ganado, el límite que se coloca es de 12500 que es el valor ganado en cupones valorado a partir de 1000000 y una tasa de cupón de $2.5\%$ semestral, en este caso la valoración se hace de acuerdo al método real/real. Matemticamente
     \[
@@ -52,7 +50,6 @@ En la primera columna encontramos que lo que se está haciendo es un cálculo de
     \[
     \frac{T}{100P_0}
     \]
-\end{document}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
