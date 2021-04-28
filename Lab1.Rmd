@@ -141,6 +141,45 @@ creacion_de_columnas <-
     ))
   }
 ```
+#Funciones para constituir los graficos 
+
+```{r}
+
+grafico1 <- function(fechas, tasabono) {
+  
+  ggplot( data = data.frame(fechas, tasabono), mapping = aes(x = fechas,  y = tasabono) ) +
+    geom_line() +
+    labs(
+      y = "Interés del Bono",
+      x = "Tiempo",
+      title = "Interés del bono a través del tiempo"
+    ) + 
+    theme(plot.title = element_text(hjust = .5))# colocamos el titulo en el centro
+  
+}
+
+grafico2 <- function(fechas,`Interes acumulado 2` , total, gcapital) {
+  
+  Datosgra<-data.frame(fechas, `Interes acumulado 2`, total, gcapital)
+  Datosgra<-gather(Datosgra, Obsevaciones, obtenido , names(Datosgra[2]):names(Datosgra[length(Datosgra)]))
+  
+  ggplot( data =Datosgra, mapping = aes(x = fechas, y = obtenido, group=Obsevaciones, color=Obsevaciones)) + 
+    geom_line()+
+    scale_color_discrete(labels=c("Ganancia de capital", "Interés acumulado", "Total"))+
+      labs(
+      y = "Monto",
+      x = "Tiempo",
+      title = "Comportamiento del bono a través tiempo" ) +
+    
+    theme(plot.title = element_text(hjust = .5))# colocamos el titulo en el centro
+  
+}
+```
+
+
+
+
+
 
 #Para bono 1
 ```{r}
@@ -207,7 +246,22 @@ bono1 <-
     "TOTAL" = bono_1$TOTAL_1,
     "Retorno total (%)" = bono_1$Retorno_total_1
   )
+rm(bono_1)
 
+```
+
+```{r}
+
+grafico1(bono1$Fecha.de.evaluación[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')],bono1$YAS_BOND_YLD[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')])
+
+grafico2(bono1$Fecha.de.evaluación[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')],bono1$INT_ACC.2[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')],bono1$TOTAL[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')], bono1$Gcapital[bono1$Fecha.de.evaluación<=as.Date('2020-03-16')] )
+
+```
+
+```{r}
+
+grafico1(bono1$Fecha.de.evaluación,bono1$YAS_BOND_YLD)
+grafico2(bono1$Fecha.de.evaluación,bono1$INT_ACC.2,bono1$TOTAL,bono1$Gcapital)
 
 ```
 
@@ -275,14 +329,23 @@ bono2 <-
     "Retorno total (%)" = bono_2$Retorno_total_2
   )
 
+rm(bono_2)
+```
+
+```{r}
+
+grafico1(bono2$Fecha.de.evaluación[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono2$YAS_BOND_YLD[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')])
+
+grafico2(bono2$Fecha.de.evaluación[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono2$INT_ACC.2[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono2$TOTAL[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')], bono2$Gcapital[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')] )
 
 ```
 
+```{r}
 
- 
+grafico1(bono2$Fecha.de.evaluación,bono2$YAS_BOND_YLD)
+grafico2(bono2$Fecha.de.evaluación,bono2$INT_ACC.2,bono2$TOTAL,bono2$Gcapital)
 
-
-
+```
 
 #Bono 3
 
@@ -350,10 +413,24 @@ bono3 <-
     "TOTAL" = bono_3$TOTAL_3,
     "Retorno total (%)" = bono_3$Retorno_total_3
   )
+rm(bono_3)
 
 ```
 
+```{r}
 
+grafico1(bono3$Fecha.de.evaluación[bono3$Fecha.de.evaluación<=as.Date('2020-03-16')],bono3$YAS_BOND_YLD[bono3$Fecha.de.evaluación<=as.Date('2020-03-16')])
+
+grafico2(bono3$Fecha.de.evaluación[bono3$Fecha.de.evaluación<=as.Date('2020-03-16')],bono3$INT_ACC.2[bono3$Fecha.de.evaluación<=as.Date('2020-03-16')],bono3$TOTAL[bono3$Fecha.de.evaluación<=as.Date('2020-03-16')], bono3$Gcapital[bono3$Fecha.de.evaluación<=as.Date('2020-03-16')] )
+
+```
+
+```{r}
+
+grafico1(bono3$Fecha.de.evaluación,bono3$YAS_BOND_YLD)
+grafico2(bono3$Fecha.de.evaluación,bono3$INT_ACC.2,bono3$TOTAL,bono3$Gcapital)
+
+```
 
 #Bono 4
 
@@ -418,83 +495,21 @@ bono4 <-
     "Retorno total (%)" = bono_4$Retorno_total_4
   )
 
-
+rm(bono_4)
 
 ```
-
-
-
-     
-    
-     
-
-
-
-
-Función para graficar
 
 ```{r}
 
-grafico1 <- function(fechas, tasabono) {
-  
-  ggplot(
-    data =data.frame(fechas, tasabono),
-    mapping = aes(
-      x = fechas,
-      y = tasabono)
-  ) +
-    geom_line() +
-    labs(
-      y = "Interés del Bono",
-      x = "Tiempo",
-      title = "Interés del bono a través del tiempo"
-    ) +
-    theme(plot.title = element_text(hjust = .5))# colocamos el titulo en el centro
-  
-}
+grafico1(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$YAS_BOND_YLD[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')])
 
-grafico1(bono1$Fecha.de.evaluación[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono1$YAS_BOND_YLD[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')])
-
-
-
+grafico2(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$INT_ACC.2[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$TOTAL[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')], bono4$Gcapital[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')] )
 
 ```
-
-
-
-
-
-
-
 
 ```{r}
-grafico2 <- function(fechas, intacum2, total, gcapital) {
-  
-  ggplot(
-    data =data.frame(fechas, intacum2, total, gcapital),
-    mapping = aes(
-      x = fechas,
-      y = total)
-     ) +
-    geom_line(aes(x = fechas , y=intacum2),color="red") +
-    geom_line(aes(x = fechas , y=total), color="green") +
-    geom_line(aes(x = fechas , y=gcapital),color="blue") +
-    labs(
-      y = "Interés del Bono",
-      x = "Tiempo",
-      title = "Interés del bono a través del tiempo"
-    ) +
-    theme(plot.title = element_text(hjust = .5))# colocamos el titulo en el centro
-  
-}
 
-grafico2(bono2$Fecha.de.evaluación[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono2$INT_ACC.2[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')],bono2$TOTAL[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')], bono2$Gcapital[bono2$Fecha.de.evaluación<=as.Date('2020-03-16')] )
-
+grafico1(bono4$Fecha.de.evaluación,bono4$YAS_BOND_YLD)
+grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
 
 ```
-
-
-
-
-
-
