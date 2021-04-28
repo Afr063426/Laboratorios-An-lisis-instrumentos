@@ -14,11 +14,11 @@ En el documento que se ha proporcionado se encuentran los flujos de un bono el c
 Entonces se tendría que cada período se contabiliza como 180 días sin embargo para determinar el precio y otros aspectos que se determinan por medio de este, si emplean el tiempo real que a transcurrido desde el último pago de cupón hasta la fecha actual. Se tiene que el monto es de 1000000 por lo que en cupones se debe recibir 12500 por período.
 \section{Marco Teórico}
   \par Se procede a hacer una breve descripción matemática de lo que se encuentra en cada columna
-\par En la primera columna se encuentra que se está haciendo el cálculo de un sub cupón y cuánto de este se ha ganado, esto es si se tiene un millón en bonos cuanto se gana en cupones
+\par En la primera columna se encuentra que se está haciendo el cálculo de un sub cupón y cuánto de este se ha ganado, esto es si se tiene 1000000 de facial en bonos cuanto se gana en cupones
     \[
     C(l,d)= F\cdot\frac{l}{d}\cdot \frac{C}{m}
     \]
-  Donde $l$ es la cantidad de tiempo que a transcurrido desde el pago del último cupón, $d$ es la cantidad de días que deben transcurrir entre el último pago de cupón y el siguiente pago de cupón, $F$ es el facial en este caso es $100$, pero se tiene 1000000 que es equivalente a tener 1000 bonos por lo que se emplea $F=1000000$, $C$ es el porcentaje de cupón y $m$ es la cantidad de períodos en un año o lo que es lo mismo la cantidad de pagos que se hacen al año.
+  Donde $l$ es la cantidad de tiempo que a transcurrido desde el pago del último cupón, $d$ es la cantidad de días que deben transcurrir entre el último pago de cupón y el siguiente pago de cupón, $F$ es el facial en este caso es $100$, pero se tiene 1000000 que es equivalente a tener 10000 bonos por lo que se emplea $F=1000000$, $C$ es el porcentaje de cupón y $m$ es la cantidad de períodos en un año o lo que es lo mismo la cantidad de pagos que se hacen al año.
  \par Ahora en la segunda columna lo que se encuentra es el monto ganado en un día correspondiente al cupón, esto es la diferencia entre el monto que se tenía ganado hasta el día anterior menos el monto que se tiene ganado hasta el día de hoy i.e.
     \[
     C(l+1,d)-C(l,d)
