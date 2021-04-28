@@ -37,7 +37,7 @@ Entonces se tendría que cada período se contabiliza como 180 días sin embargo
     \end{cases}
     \]
     \par Esto es lo que se conoce como precio limpio (clean price). Se escribe en forma de sumatoría ya que se quiere saber el precio durante el transcurso de los períodos no en períodos espec\'ficos. Se tiene que lo que se hace es traer al valor presente los flujos en este caso el valor de rendención $M$ y los cupones que son la tasa cupón $C$ por el facial $F$  y dividido entre la frecuencia $m$, se tiene que $i^{(m)}$ la tasa de rendimiento, $m$ el número de períodos y $n$ el número de cupones que hacen falta para que venza el bono. Se tiene que se le resta el monto adquirido del cupón del período es decir $F\frac{Cl}{md}$, esto para no contabilizar el monto del cupón adquirido hasta esa fecha. Se tiene que $d$ son las cantidad de días que han transcurrido desde el pago del último cupón, $d-l$ es la cantidad de días que faltan para que se haga el pago y $d$ es la cantida de días que se supone tiene un período. Cabe destacar que muchas de estas variables son establecidad a conveniencia despendiendo de lo que se establecido como la estructura del bono, por ejemplo se podría emplear el método 360/360 o real/real que afecta la estructura de lo anterioermente mostrado.
-     \par Ganancia de capital esto representa la ganancia o perdida que se está teniendo cada día por el monto invertido en bonos que es equivalente a 1000 bonos o $1000000$ en facial matemáticamente
+     \par Ganancia de capital esto representa la ganancia o perdida que se está teniendo cada día por el monto invertido en bonos que es equivalente a 10000 bonos o $1000000$ en facial matemáticamente
     \[
     G(n,l)=\frac{Inv\cdot(P(n,l)-P_0)}{100}
     \]
