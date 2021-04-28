@@ -64,10 +64,12 @@ Se tiene que la fórmula del factor viene dada por
 s=-\frac{f_{0}-f_{1}}{l}
 \]
 Donde $f_{0}$ es la tasa de descuento vigente con la que se adquirido el bono mientras la tasa $f_1$ que estará vigente dentro de una año, y $l$ es la cantidad de días que hay entre el día que se adquirió a hasta dentro de un año. Se tiene que esta representa la forma en que se distribuye por día la disminución en la tasa de descuento. Esto sirve para medir a su vez la sensibilidad que tiene el precio del bono ante un shock es decir aumento o disminución de la tasa. Cabe destacar que se pueden crear portafolios los cuales sean capaces evitar por decirlo de cierta forma ciertos shocks.
-%\par Una alternativa a este modelo de un factor basado en las tasas esperadas y %actuales es el modelo de los tres factores. El cual su explicación se escapa del %objetivo de este informe.
-\par Una alternativa a este modelo es el de la aproximación mediante la curva de rendimiento CMT y el Spread de Merril Lynch, este método es empleado en países donde no se cuente con curva soberana, que es una curva de rendimiento que relaciona el rendimiento con el plazo al vencimiento de instrumentos financieros, en cierta medida esto refleja cómo se espera que se comporte el mercado en un período determinado. Costa Rica sí cuenta con una Curva de rendimiento soberana.
-\par En el método de CMT (Constant Maturity Treasury) más Spread de Merrill Lynch se determina el rendimiento de acuerdo a la curva de rendimiento CMT es similar a lo que se presenta en el trabajo sin embargo al valor obtenido con esta curva de rendimiento se le suma el spread de Merrill Lynch.
-\par Otro metodo es la aproximación mediante extrapolación polinomial cuadrática. En este caso lo que se hace es usar la extrapolación cuadrática, sin embargo este se emplea cuando se desea determinar los precios, fuera de un intervalo donde ya se conocen dos puntos. En el caso del bono 1 ya se tiene un rendimiento inicial y se tiene uno esperado es decir en cierta forma ya se conocen dos puntos del intervalo y con este es que se calculan los precios.
+\par Una alternativa a este modelo es el de la aproximación mediante la curva de rendimiento CMT y el Spread de Merril Lynch, este método es empleado en países donde no se cuente con curva soberana, esta refleja cómo se espera que se comporte el mercado en un período determinado. Costa Rica sí cuenta con una Curva de rendimiento soberana.
+\par En el método de CMT (Constant Maturity Treasury) más Spread de Merrill Lynch se determina el rendimiento de acuerdo a la curva de rendimiento CMT es similar a lo que se presenta en el trabajo sin embargo al valor obtenido con esta curva de rendimiento se le suma el Spread de Merrill Lynch.
+\[
+s_i=\frac{l_2s_1+l_1s_2}{l}+s_m
+\]
+\par $l_2$ es la cantidad de días entre el vencimiento del bono y el punto hasta el que se quiere determinar el precio, $l_1$ es la cantidad de días entre el vencimiento del bono y el primer punto a partir del cual se quiere determinar los precios, $l$ es la cantidad de días entre el primer día a partir del cual se quiere determinar y el días hasta que se desea determinar los precios, $s_{1,2}$ es la tasa de rendimiento asociada según la curva CMT y $s_m$ es el Spread de Merrill Lynch. Otro metodo es la aproximación mediante extrapolación polinomial cuadrática, para puntos fuera de un intervalo.
 \section{Resultados}
 \par En la presente sección se trabajara con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2).
 ```{r setup, include=FALSE}
@@ -108,8 +110,8 @@ colnames(Datos)[1:length(Datos)] <-
 
 ```
 
-#Funciones que se van a emplear
 ```{r, echo=FALSE}
+#Funciones que se van a emplear precio y demás
 vectorr <- c()
 calculo_precio <-
   function(facial, cupon, tasa, periodos, dias, final) {
@@ -187,9 +189,9 @@ creacion_de_columnas <-
     ))
   }
 ```
-#Funciones para constituir los graficos 
 
 ```{r, echo=FALSE}
+#Funciones para constituir los graficos 
 
 grafico1 <- function(fechas, tasabono) {
   
@@ -565,5 +567,7 @@ grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
 \section{Conclusión}
 
 \newpage\section{Referencias}
-Litterman, R. & Scheinkman, J. (1991) \textit{Common factors affecting bond returns}. Recuperado de https://www.math.nyu.edu/faculty/avellane/Litterman1991.pdf
+Litterman, R. & Scheinkman, J. (1991). \textit{Common factors affecting bond returns}. Recuperado de https://www.math.nyu.edu/faculty/avellane/Litterman1991.pdf
+BCCR (s.f). Notas metodológicas. Curva de rendimiento soberana de Costa Rica. Recuperado de https://gee.bccr.fi.cr/indicadoreseconomicos/Documentos/DocumentosMetodologiasNotasTecnicas/Nota%20Metodol%C3%B3gica%20Curva%20de%20Rendimiento%20Soberana%20de%20Costa%20Rica.pdf
+SugeVal (2009). \textit{Metodología de cálculo del valor en riesgo y cálculo del saldo abierto a plazo ajustado por riesgo}. Recuperado de https://www.sugeval.fi.cr/normativa/Reglamento%20del%20Mercado%20de%20Valores/Notat%C3%A9cnicaSAAR.pdf
 
