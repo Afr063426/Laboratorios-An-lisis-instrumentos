@@ -65,7 +65,7 @@ s_i=\frac{l_2s_1+l_1s_2}{l}+s_m
 
 \section{Resultados}
 
-\par En la presente sección se trabajara con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2), esto por motivos practicos a la hora de desarrollar el cuerpo del trabajo. 
+\par En la presente sección se trabajara con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2), esto por motivos practicos a la hora de desarrollar el cuerpo del trabajo, así mismo se conservo la palabra total para referises a la ganancia neta del capital del bono, puesto que es el nombre de la columna del excel original, esto para los graficos. 
 
 \par Es bueno tener en cuenta la relación para las variables presentadas, el cambio en el interés me afecta indirectamente la ganancia o pérdida de capital, la cual a su vez me afecta el total de una manera directa, esto por la relación que guardan las fórmulas utilizadas. Cabe resaltar que el Interés acumulado 2 es el mismo para todos los escenarios, por lo descrito en el marco teórico y a su vez tanto los valores iniciales como los finales son iguales en todos los escenarios.
 
@@ -225,7 +225,7 @@ grafico2 <- function(fechas,`Interes acumulado 2` , total, gcapital) {
 
 
 
-\subsection{Análisis del bono 1}
+\subsection{Análisis descriptivo del bono 1}
 
 ```{r, echo=FALSE}
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
@@ -316,7 +316,7 @@ grafico2(bono1$Fecha.de.evaluación,bono1$INT_ACC.2,bono1$TOTAL,bono1$Gcapital)
 
 
 
-\subsection{Análisis del bono 2}
+\subsection{Análisis descriptivo del bono 2}
 
 ```{r,echo=FALSE}
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
@@ -407,7 +407,7 @@ Se aprecia un interés constante durante todo el periodo lo que me genera un Gan
 
 
 
-\subsection{Análisis del bono 3}
+\subsection{Análisis descriptivo del bono 3}
 
 
 ```{r, echo=FALSE}
@@ -495,7 +495,7 @@ grafico2(bono3$Fecha.de.evaluación,bono3$INT_ACC.2,bono3$TOTAL,bono3$Gcapital)
 Se puede observar un comportamiento igual al bono 2 hasta la caída abrupta del interés de doscientos puntos porcentuales, esta situación genera un efecto contrario en la ganancia del capital, la cual aumenta cerca de veintitrés mil, misma situación que ocurre con el total. El comportamiento de estos dos después del alza es opuesto, puesto que, ahora la ganancia de capital decrece constantemente, pero con una gran pendiente, mientras que el total aumenta paulatinamente.
 
 
-\subsection{Análisis del bono 4}
+\subsection{Análisis descriptivo del bono 4}
 
 
 ```{r, echo=FALSE}
@@ -568,7 +568,7 @@ grafico1(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03
 grafico2(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$INT_ACC.2[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$TOTAL[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')], bono4$Gcapital[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')] )
 ```
 
-```{r, fig.width=3, fig.height=2.5, echo=FALSE}
+```{r, fig.width=3.1, fig.height=2.5, echo=FALSE}
 
 grafico1(bono4$Fecha.de.evaluación,bono4$YAS_BOND_YLD)
 grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
@@ -578,6 +578,12 @@ grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
 Con este bono apreciamos el supuesto contrario del caso anterior, un drástico aumento de doscientos puntos porcentuales en la tasa de interés del bono. Lo anterior genera una caída de cerca de veintitrés mil en la ganancia de capital, así por el mismo monto en el total. Ahora su recuperación hacia los valores finales es llevada a cabo por una creciente ganancia de capital y una pendiente un poco más drástica en lo que respecta al total.
 
 \section{Conclusión}
+
+Se puede obtener de los datos expuestos, partiendo de una situación sin shok’s como lo es el escenario del bono 2, los mismo van a afectar la ganancia de capital a través del tiempo dependiendo de cómo estos actúen, ya sea incrementando el interés del bono o haciéndolo caer, como se vio en los bonos 3 y 4. 
+
+Con respecto a los resultados arrojados por el escenario del bono 1, se puede apreciar como la decreciente tasa de interés del bono, no afecta de la misma manera a la ganancia de capital y a la ganancia neta, durante todo el periodo, puesto que se tiene un periodo creciente y uno decreciente. Lo anterior es debido a los valores fijos que se tienen a la fecha de vencimiento, es decir que las variaciones en la tasa de interés no influyen en los resultados al vencimiento, siendo así que el periodo de fluctuación del bono tiene a ir hacia estos resultados. 
+
+
 
 \newpage\section{Referencias}
 Litterman, R. & Scheinkman, J. (1991). \textit{Common factors affecting bond returns}. Recuperado de https://www.math.nyu.edu/faculty/avellane/Litterman1991.pdf
