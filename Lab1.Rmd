@@ -65,6 +65,7 @@ s=-\frac{f_{0}-f_{1}}{l}
 Donde $f_{0}$ es la tasa de descuento vigente con la que se adquirido el bono mientras la tasa $f_1$ que estará vigente dentro de una año, y $l$ es la cantidad de días que hay entre el día que se adquirió a hasta dentro de un año. Se tiene que esta representa la forma en que se distribuye por día la disminución en la tasa de descuento. Esto sirve para medir a su vez la sensibilidad que tiene el precio del bono ante un shock es decir aumento o disminución de la tasa. Cabe destacar que se pueden crear portafolios los cuales sean capaces evitar por decirlo de cierta forma ciertos shocks.
 
 \section{Resultados}
+\par En la presente sección se trabajara con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2).
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
