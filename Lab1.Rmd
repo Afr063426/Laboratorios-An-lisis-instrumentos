@@ -330,12 +330,6 @@ grafico2(bono1$Fecha.de.evaluación,bono1$INT_ACC.2,bono1$TOTAL,bono1$Gcapital)
 ```
 \par Como se puede observar se tiene una caída lineal del interés del bono con el paso del tiempo esto se debe a la disminución de la tasa que se hace el ajuste paulatinamente conforme pasan los días, lo que refleja en un comportamiento cóncavo para la ganancia de capital, lo que influye en el mismo comportamiento del total. 
 
-
-
-
-
-
-
 \subsection{Análisis descriptivo del bono 2}
 
 ```{r,echo=FALSE}
