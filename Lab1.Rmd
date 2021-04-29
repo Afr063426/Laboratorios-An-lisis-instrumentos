@@ -35,8 +35,7 @@ indent: true
 
 \section{Marco Teórico}
 
-\phantom{abc} Se procede a hacer una breve descripción matemática de lo que se encuentra en cada columna.
-\par En la primera columna se encuentra que se está haciendo el cálculo de un sub cupón y cuánto de este se ha ganado, esto es si se tiene el equivalente a 1000000 de facial en bonos cuanto se gana en cupones
+\phantom{abc} Se procede a hacer una breve descripción matemática de lo que se encuentra en cada columna. En la primera columna se encuentra que se está haciendo el cálculo de un sub cupón y cuánto de este se ha ganado, esto es si se tiene el equivalente a 1000000 de facial en bonos cuanto se gana en cupones
     \[
     C(l,d)= F\cdot\frac{l}{d}\cdot \frac{C}{m}
     \]
