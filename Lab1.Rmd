@@ -1,31 +1,45 @@
 ---
-title: "Laboratorio 1"
-author: "Joshua Cervantes y Daniel Sabater"
-date: "24/4/2021"
 output:
   pdf_document: default
 indent: true
 
 ---
+\begin{titlepage}
+\centering
+{\bfseries\LARGE Universidad De Costa Rica \par}
+\vspace{1cm}
+{\scshape\Large Análisis de instrumentos de inversión \par}
+\vspace{3cm}
+{\scshape\Huge Análisis gráfico de bonos \par}
+\vspace{3cm}
+{\itshape\Large Laboratorio 1 \par}
+\vfill
+{\Large Autores: \par}
+{\Large Joshua Cervantes Artavia\par}
+{\Large Daniel Sabater Guzmán\par}
+\vfill
+{\Large Abirl 2021 \par}
+\end{titlepage}
+\newpage
 \tableofcontents
 \newpage
 \section{Introducción}
-En el documento que se ha proporcionado se encuentran los flujos de un bono el cuál cuenta con cupones de $2.5\%$ compuestos semestralmentes es decir se pagan dos veces al año y el monto pagado es de $1.25\%$ sobre el facial, que en este caso corresponde a 100 y este también corresponde al valor de redención. Ahora como se había mencionado anteriormente se hacen dos pagos al año en estos bonos en los 4 los pagos se realizan a final de febrero es decir 28 o 29 dependiendo de si el año es bisiesto o no y los 31 de agosto. Otro aspecto a tener en cuenta es que estos bonos están calculados bajo el método $\frac{\textbf{real}}{360}$
-Entonces se tendría que cada período se contabiliza como 180 días sin embargo para determinar el precio y otros aspectos que se determinan por medio de este, si emplean el tiempo real que a transcurrido desde el último pago de cupón hasta la fecha actual. Se tiene que el monto es de 1000000 por lo que en cupones se debe recibir 12500 por período.
+En el documento que se ha proporcionado se encuentran los flujos de un bono el cuál cuenta con cupones de $2.5\%$ compuestos semestralmentes es decir se pagan dos veces al año y el monto pagado es de $1.25\%$ sobre el facial, que en este caso corresponde a 100 y este también corresponde al valor de redención. Ahora como se había mencionado anteriormente se hacen dos pagos al año en estos pagos se realizan a final de febrero es decir 28 o 29 dependiendo de si el año es bisiesto o no y los 31 de agosto. Otro aspecto a tener en cuenta es que estos bonos están calculados bajo el método $\frac{\textbf{real}}{360}$.
+Entonces se tendría que cada período se contabiliza como 180 días sin embargo para determinar el precio y otros aspectos que se determinan por medio de este, si emplea el tiempo real que a transcurrido desde el último pago de cupón hasta la fecha actual. Se tiene que el monto facial equivalente en bonos es 1000000 por lo que en cupones se debe recibir 12500 por período.
 \section{Marco Teórico}
-  \par Se procede a hacer una breve descripción matemática de lo que se encuentra en cada columna
-\par En la primera columna se encuentra que se está haciendo el cálculo de un sub cupón y cuánto de este se ha ganado, esto es si se tiene 1000000 de facial en bonos cuanto se gana en cupones
+  \par Se procede a hacer una breve descripción matemática de lo que se encuentra en cada columna.
+\par En la primera columna se encuentra que se está haciendo el cálculo de un sub cupón y cuánto de este se ha ganado, esto es si se tiene el equivalente a 1000000 de facial en bonos cuanto se gana en cupones
     \[
     C(l,d)= F\cdot\frac{l}{d}\cdot \frac{C}{m}
     \]
   Donde $l$ es la cantidad de tiempo que a transcurrido desde el pago del último cupón, $d$ es la cantidad de días que deben transcurrir entre el último pago de cupón y el siguiente pago de cupón, $F$ es el facial en este caso es $100$, pero se tiene 1000000 que es equivalente a tener 10000 bonos por lo que se emplea $F=1000000$, $C$ es el porcentaje de cupón y $m$ es la cantidad de períodos en un año o lo que es lo mismo la cantidad de pagos que se hacen al año.
- \par Ahora en la segunda columna lo que se encuentra es el monto ganado en un día correspondiente al cupón, esto es la diferencia entre el monto que se tenía ganado hasta el día anterior menos el monto que se tiene ganado hasta el día de hoy i.e.
+ \par Ahora en la segunda columna lo que se encuentra es el monto ganado en un día, correspondiente al cupón, esto es la diferencia entre el monto que se tenía ganado hasta el día anterior menos el monto que se tiene ganado hasta el día de hoy i.e.
     \[
     C(l+1,d)-C(l,d)
     \]
-    \par Después se encuentra la columna que corresponde a la tasa de descuento, se ve directamente afectada por los shocks. En este caso se tiene que el para el bono hay múltiples shocks que su cálculo posteriormente se explicará. Esta tasa permite saber cuánto se está ganando por mantener el dinero invertido en el bono y permite hacer valoraciones del dinero a través del tiempo. En este caso se denotará por 
+    \par Después se encuentra la columna que corresponde a la tasa de descuento. Se ve directamente afectada por los shocks. En este caso se tiene que el para el bono 1 hay múltiples shocks que su cálculo posteriormente se explicará. Esta tasa permite saber cuánto se está ganando por mantener el dinero invertido en el bono y permite hacer valoraciones del dinero a través del tiempo. En este caso se denotará por 
     \[
-    i^{m}
+    i^{(m)}
     \]
     Donde $m$ respresenta la cantidad de períodos e $i$ es la tasa anual pero compuesta de acuerdo a ese período.
     Se tiene que para el caso del bono 3 se tiene una perdida de 200 pp lo que hace que la tasa de descuento dismuya y hace que el precio del bono aumente de manera abrupta, por otro lado se tiene que en el bono 4 aumenta en 200 pp que hace el precio del bono disminuya de forma abrupta.
@@ -36,34 +50,42 @@ Entonces se tendría que cada período se contabiliza como 180 días sin embargo
     \frac{\frac{FC}{m}+R}{\frac{i^{(m)}}{m}\cdot\frac{d-l}{d}+1}-\frac{FC}{m}\cdot\frac{l}{d} & n=1
     \end{cases}
     \]
-    \par Esto es lo que se conoce como precio limpio (clean price). Se escribe en forma de sumatoría ya que se quiere saber el precio durante el transcurso de los períodos no en períodos espec\'ficos. Se tiene que lo que se hace es traer al valor presente los flujos en este caso el valor de rendención $M$ y los cupones que son la tasa cupón $C$ por el facial $F$  y dividido entre la frecuencia $m$, se tiene que $i^{(m)}$ la tasa de rendimiento, $m$ el número de períodos y $n$ el número de cupones que hacen falta para que venza el bono. Se tiene que se le resta el monto adquirido del cupón del período es decir $F\frac{Cl}{md}$, esto para no contabilizar el monto del cupón adquirido hasta esa fecha. Se tiene que $d$ son las cantidad de días que han transcurrido desde el pago del último cupón, $d-l$ es la cantidad de días que faltan para que se haga el pago y $d$ es la cantida de días que se supone tiene un período. Cabe destacar que muchas de estas variables son establecidad a conveniencia despendiendo de lo que se establecido como la estructura del bono, por ejemplo se podría emplear el método 360/360 o real/real que afecta la estructura de lo anterioermente mostrado.
+    \par Esto es lo que se conoce como precio limpio (clean price). Se escribe en forma de sumatoría ya que se quiere saber el precio durante el transcurso de los períodos no en períodos específicos. Se tiene que lo que se hace es traer al valor presente los flujos en este caso el valor de rendención $M$ y los cupones que son la tasa cupón $C$ por el facial $F$  y dividido entre la frecuencia $m$, se tiene que $i^{(m)}$ la tasa de rendimiento, $m$ el número de períodos y $n$ el número de cupones que hacen falta para que venza el bono. Se tiene que se le resta el monto adquirido del cupón del período es decir $F\frac{Cl}{md}$, esto para no contabilizar el monto del cupón adquirido hasta esa fecha. Se tiene que $d$ son las cantidad de días que han transcurrido desde el pago del último cupón, $d-l$ es la cantidad de días que faltan para que se haga el pago y $d$ es la cantidad de días que se supone tiene un período. Cabe destacar que muchas de estas variables son establecidas a conveniencia despendiendo de lo que se establecido como la estructura del bono, por ejemplo se podría emplear el método 360/360 o real/real que afecta la estructura de lo anterioermente mostrado.
+    \par Se tiene que en este caso el día en el que se está haciendo la valoración no se toma en cuenta esto se debe a que durante este día no se ha tenido ninguna ganacia de intereses por lo que en ese mismo no se contabiliza, salvo que fuese interes constante.
+    \par Un aspecto importante es que cuando $n>1$ se emplea el interés compuesto mientras que el decuento se hace mediante el interés simple. Para lo que es el caso en el que solo queda un período es decir solo queda un cupon i.e. $n=1$ se tiene que se emplea la valoración mediante el método de interés simple, al hacerse de esta forma en lugar de con interés compuesto el valor del dinero en el período que se esté valorando es menor que si se hiciera de forma compuesta. Se puede mostrar que para los casos en que $n>1$ la valoración mediante el método compuesto brinda un precio menor que si se hace mediante el método de interés simple.
      \par Ganancia de capital esto representa la ganancia o perdida que se está teniendo cada día por el monto invertido en bonos que es equivalente a 10000 bonos o $1000000$ en facial matemáticamente
     \[
     G(n,l)=\frac{Inv\cdot(P(n,l)-P_0)}{100}
     \]
-    Donde $Inv$ es el equivalente al facial de acuerdo a la cantidad de bonos, $P(n,l)$ el precio que tiene el bono a ese momento y $P_0$ el precio al que se adquirió.
-     \par Se encuentra que la columna de total, que representa el precio real que tiene para el dueño que toma en cuenta el costo que tuvo el bono.
+    Donde $Inv$ es el equivalente al facial de acuerdo a la cantidad de bonos, $P(n,l)$ el precio que tiene el bono a ese momento y $P_0$ el precio al que se adquirió. En este caso se muestra cuánto ganó o perdió la persona por mantener un total de 10000 bonos, con respecto al precio en que se compró. Es importante destacar que en el momento en que se adquiere el bono no se contabiliza ninguna ganacia de capital ya que anteriomente no se tenía ninguna referencia.
+     \par Se encuentra que la columna de total, que representa la ganancia real del cupón que tiene el dueño a partir de tener 10000 bonos y teniendo en cuenta el monto que se pagó
     \[
     T(n,l)=P(n,l)-G(n,l)
     \]
     \par Y final se encuentra la columna de retorno total que representa el retorno total que se tiene hasta esa fecha por haber comprado el bono a ese precio
     \[
-    \frac{T}{100P_0}
+    \frac{T(n,l)}{100Inv}
     \]
+    Esto representa el verdadero retorno real que se está teniendo por mantener los bonos que tiene, esto ya que se toma en cuenta de forma implícita el precio que tuvo el bono.
 \section{Adicional}
-Se tiene que la fórmula del factor viene dada por 
+Se tiene que la fórmula del factor que describe el shock viene dada por 
 \[
 s=-\frac{f_{0}-f_{1}}{l}
 \]
-Donde $f_{0}$ es la tasa de descuento vigente con la que se adquirido el bono mientras la tasa $f_1$ que estará vigente dentro de una año, y $l$ es la cantidad de días que hay entre el día que se adquirió a hasta dentro de un año. Se tiene que esta representa la forma en que se distribuye por día la disminución en la tasa de descuento. Esto sirve para medir a su vez la sensibilidad que tiene el precio del bono ante un shock es decir aumento o disminución de la tasa. Cabe destacar que se pueden crear portafolios los cuales sean capaces evitar por decirlo de cierta forma ciertos shocks.
-\par Una alternativa a este modelo es el de la aproximación mediante la curva de rendimiento CMT y el Spread de Merril Lynch, este método es empleado en países donde no se cuente con curva soberana, esta refleja cómo se espera que se comporte el mercado en un período determinado. Costa Rica sí cuenta con una Curva de rendimiento soberana.
+\par Donde $f_{0}$ es la tasa de descuento vigente con la que se adquirido el bono mientras la tasa $f_1$ que estará vigente dentro de una año, y $l$ es la cantidad de días que hay entre el día que se adquirió hasta dentro de un año. Se tiene que esta representa la forma en que se distribuye por día la disminución en la tasa de descuento. Esto sirve para medir a su vez la sensibilidad que tiene el precio del bono ante un shock es decir aumento o disminución de la tasa. Cabe destacar que se pueden crear portafolios los cuales sean capaces evitar por decirlo de cierta forma ciertos shocks.
+\par Una alternativa a este modelo es el de la aproximación mediante la curva de rendimiento CMT y el Spread de Merril Lynch, este método es empleado en países donde no se cuenta con curva soberana, esta refleja cómo se espera que se comporte el mercado en un período determinado. Costa Rica sí cuenta con una Curva de rendimiento soberana.
 \par En el método de CMT (Constant Maturity Treasury) más Spread de Merrill Lynch se determina el rendimiento de acuerdo a la curva de rendimiento CMT es similar a lo que se presenta en el trabajo sin embargo al valor obtenido con esta curva de rendimiento se le suma el Spread de Merrill Lynch.
 \[
 s_i=\frac{l_2s_1+l_1s_2}{l}+s_m
 \]
 \par $l_2$ es la cantidad de días entre el vencimiento del bono y el punto hasta el que se quiere determinar el precio, $l_1$ es la cantidad de días entre el vencimiento del bono y el primer punto a partir del cual se quiere determinar los precios, $l$ es la cantidad de días entre el primer día a partir del cual se quiere determinar y el días hasta que se desea determinar los precios, $s_{1,2}$ es la tasa de rendimiento asociada según la curva CMT y $s_m$ es el Spread de Merrill Lynch. Otro metodo es la aproximación mediante extrapolación polinomial cuadrática, para puntos fuera de un intervalo.
+
 \section{Resultados}
-\par En la presente sección se trabajara con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2).
+
+\par En la presente sección se trabajará con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2), esto por motivos prácticos a la hora de desarrollar el cuerpo del trabajo, así mismo se conservo la palabra total para referises a la ganancia neta del capital del bono, puesto que es el nombre de la columna del excel original, esto para los gráficos. 
+
+\par Es bueno tener en cuenta la relación para las variables presentadas, el cambio en el interés me afecta indirectamente la ganancia o pérdida de capital, la cual a su vez me afecta el total de una manera directa, esto por la relación que guardan las fórmulas utilizadas. Cabe resaltar que el Interés acumulado 2 es el mismo para todos los escenarios, por lo descrito en el marco teórico y a su vez tanto los valores iniciales como los finales son iguales en todos los escenarios.
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,fig.width=3, fig.height=3)
 
@@ -220,7 +242,7 @@ grafico2 <- function(fechas,`Interes acumulado 2` , total, gcapital) {
 
 
 
-\subsection{Análisis del bono 1}
+\subsection{Análisis descriptivo del bono 1}
 
 ```{r, echo=FALSE}
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
@@ -303,10 +325,15 @@ grafico1(bono1$Fecha.de.evaluación,bono1$YAS_BOND_YLD)
 grafico2(bono1$Fecha.de.evaluación,bono1$INT_ACC.2,bono1$TOTAL,bono1$Gcapital)
 
 ```
+\par Como se puede observar se tiene una caída lineal del interés del bono con el paso del tiempo esto se debe a la disminución de la tasa que se hace el ajuste paulatinamente conforme pasan los días, lo que refleja en un comportamiento cóncavo para la ganancia de capital, lo que influye en el mismo comportamiento del total. 
 
 
 
-\subsection{Análisis del bono 2}
+
+
+
+
+\subsection{Análisis descriptivo del bono 2}
 
 ```{r,echo=FALSE}
 fecha <- seq(as.Date("2019-03-15"), as.Date("2021-03-01"), "day")
@@ -392,7 +419,12 @@ grafico2(bono2$Fecha.de.evaluación,bono2$INT_ACC.2,bono2$TOTAL,bono2$Gcapital)
 
 ```
 
-\subsection{Análisis del bono 3}
+Se aprecia un interés constante durante todo el periodo lo que me genera un Ganancia de capital decreciente, por el paso del tiempo, de una manera lineal y de mínima variación, lo que afecta de la misma manera al Total.
+
+
+
+
+\subsection{Análisis descriptivo del bono 3}
 
 
 ```{r, echo=FALSE}
@@ -477,7 +509,10 @@ grafico2(bono3$Fecha.de.evaluación,bono3$INT_ACC.2,bono3$TOTAL,bono3$Gcapital)
 
 ```
 
-\subsection{Análisis del bono 4}
+Se puede observar un comportamiento igual al bono 2 hasta la caída abrupta del interés de 200 pp, generando un efecto contrario en G.C., la cual aumenta cerca de veintitrés mil en un solo día, afectando positivamente el total. El comportamiento de estos dos después del alza es opuesto, puesto que, ahora la ganancia de capital decrece, mientras que el total aumenta.
+
+
+\subsection{Análisis descriptivo del bono 4}
 
 
 ```{r, echo=FALSE}
@@ -550,16 +585,23 @@ grafico1(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03
 grafico2(bono4$Fecha.de.evaluación[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$INT_ACC.2[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')],bono4$TOTAL[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')], bono4$Gcapital[bono4$Fecha.de.evaluación<=as.Date('2020-03-16')] )
 ```
 
-```{r, fig.width=3, fig.height=2.5, echo=FALSE}
+```{r, fig.width=3.1, fig.height=2.5, echo=FALSE}
 
 grafico1(bono4$Fecha.de.evaluación,bono4$YAS_BOND_YLD)
 grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
 
 ```
+
+Con este bono apreciamos un escenario contrario al anterior, un drástico aumento de 200 pp en la tasa de interés del bono. Lo anterior genera una caída de cerca 23000 en G.P., así por el mismo monto en el total. Sin embargo posteriormente se muestra una creciente ganancia de capital y una pendiente mayor en el total.
+
 \section{Conclusión}
+\par Se puede concluir de los datos expuestos, que en una situación sin shocks como lo es el escenario del bono 2, los mismo van a afectar G.C. a través del tiempo dependiendo de cómo estos actúen, ya sea incrementando el interés del bono o haciéndolo caer, como se vio en los bonos 3 y 4. En el escenario del bono 1, se puede apreciar que la decreciente tasa de interés del bono, no afecta de la misma manera a la G.C. y a la ganancia neta, durante el periodo, puesto que se tiene un periodo creciente y uno decreciente. Lo anterior es debido a los valores fijos que se tienen a la fecha de vencimiento, es decir que las variaciones en la tasa de interés no influyen en los resultados al vencimiento. 
+\par A su vez se puede concluir que los cambios que se distribuyen a lo largo de período generan curvas de G.C. y de totla más suaves que los casos en los que el cambio se hace de manera abrupta. También a pesar de que los shocks generen un cambios muy pronunciados en las curvas de de total, G.C. y la de interés, finalmente las curvas de G.C. y total tanto en el caso de un shock distribuido de forma paulatina, como el de un shock repentino y en el que no hay ningún shock se cumple que las ganancias de capital y totales son las mismas al final de todos los períodos.
+\par Para culminar se tiene que se pueden modelar los shocks o comportamiento de las tasas de distintas formas, y en cierta medida el método que se emplee va depender de cuánta información se tenga.
+
 
 \newpage\section{Referencias}
-Litterman, R. & Scheinkman, J. (1991). \textit{Common factors affecting bond returns}. Recuperado de https://www.math.nyu.edu/faculty/avellane/Litterman1991.pdf
-BCCR (s.f). Notas metodológicas. Curva de rendimiento soberana de Costa Rica. Recuperado de https://gee.bccr.fi.cr/indicadoreseconomicos/Documentos/DocumentosMetodologiasNotasTecnicas/Nota%20Metodol%C3%B3gica%20Curva%20de%20Rendimiento%20Soberana%20de%20Costa%20Rica.pdf
-SugeVal (2009). \textit{Metodología de cálculo del valor en riesgo y cálculo del saldo abierto a plazo ajustado por riesgo}. Recuperado de https://www.sugeval.fi.cr/normativa/Reglamento%20del%20Mercado%20de%20Valores/Notat%C3%A9cnicaSAAR.pdf
+\par Litterman, R. & Scheinkman, J. (1991). \textit{Common factors affecting bond returns}. Recuperado de https://www.math.nyu.edu/faculty/avellane/Litterman1991.pdf
+\par BCCR (s.f). Notas metodológicas. Curva de rendimiento soberana de Costa Rica. Recuperado de https://gee.bccr.fi.cr/indicadoreseconomicos/Documentos/DocumentosMetodologiasNotasTecnicas/Nota%20Metodol%C3%B3gica%20Curva%20de%20Rendimiento%20Soberana%20de%20Costa%20Rica.pdf
+\par SugeVal (2009). \textit{Metodología de cálculo del valor en riesgo y cálculo del saldo abierto a plazo ajustado por riesgo}. Recuperado de https://www.sugeval.fi.cr/normativa/Reglamento%20del%20Mercado%20de%20Valores/Notat%C3%A9cnicaSAAR.pdf
 
