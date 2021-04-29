@@ -24,8 +24,8 @@ indent: true
 \tableofcontents
 \newpage
 \section{Introducción}
-En el documento que se ha proporcionado se encuentran los flujos de un bono el cuál cuenta con cupones de $2.5\%$ compuestos semestralmentes es decir se pagan dos veces al año y el monto pagado es de $1.25\%$ sobre el facial, que en este caso corresponde a 100 y este también corresponde al valor de redención. Ahora como se había mencionado anteriormente se hacen dos pagos al año en estos pagos se realizan a final de febrero es decir 28 o 29 dependiendo de si el año es bisiesto o no y los 31 de agosto. Otro aspecto a tener en cuenta es que estos bonos están calculados bajo el método $\frac{\textbf{real}}{360}$.
-Entonces se tendría que cada período se contabiliza como 180 días sin embargo para determinar el precio y otros aspectos que se determinan por medio de este, si emplea el tiempo real que a transcurrido desde el último pago de cupón hasta la fecha actual. Se tiene que el monto facial equivalente en bonos es 1000000 por lo que en cupones se debe recibir 12500 por período.
+En el documento que se ha proporcionado se encuentran los flujos de un bono el cuál cuenta con cupones de $2.5\%$ compuestos semestralmentes es decir se pagan dos veces al año y el monto pagado es de $1.25\%$ sobre el facial, que en este caso corresponde a 100 y este también corresponde al valor de redención. Ahora como se había mencionado anteriormente se hacen dos pagos al año estos pagos se realizan a final de febrero es decir 28 o 29 dependiendo de si el año es bisiesto o no y los 31 de agosto. Otro aspecto a tener en cuenta es que estos bonos están calculados bajo el método $\frac{\textbf{real}}{360}$, regla del banquero.
+Entonces se tendría que cada período se contabiliza como 180 días sin embargo para determinar el precio y otros aspectos que se determinan por medio de este, se emplea el tiempo real que a transcurrido desde el último pago de cupón hasta la fecha actual. Se tiene que el monto facial equivalente en bonos es 1000000 por lo que en cupones se debe recibir 12500 por período.
 \section{Marco Teórico}
   \par Se procede a hacer una breve descripción matemática de lo que se encuentra en cada columna.
 \par En la primera columna se encuentra que se está haciendo el cálculo de un sub cupón y cuánto de este se ha ganado, esto es si se tiene el equivalente a 1000000 de facial en bonos cuanto se gana en cupones
@@ -325,8 +325,7 @@ grafico1(bono1$Fecha.de.evaluación,bono1$YAS_BOND_YLD)
 grafico2(bono1$Fecha.de.evaluación,bono1$INT_ACC.2,bono1$TOTAL,bono1$Gcapital)
 
 ```
-\par Como se puede observar se tiene una caída lineal del interés del bono con el paso del tiempo esto se debe a la disminución de la tasa que se hace el ajuste paulatinamente conforme pasan los días, lo que refleja en un comportamiento cóncavo para la ganancia de capital, lo que influye en el mismo comportamiento del total. 
-
+\par Como se puede observar se tiene una caída lineal del interés del bono con el paso del tiempo esto se debe a la disminución de la tasa que se hace el ajuste paulatinamente conforme pasan los días, lo que refleja en un comportamiento cóncavo para la ganancia de capital, lo que influye en el mismo comportamiento del total.También se puede notar que a pesar de que la tasa de descuento varia con el tiempo y me afecta la curvas de G.C. y la de total, la de los intereses no se ve afecta, esto se debe a que no se ven afectos los pagos de lo cupones, a pesar de que estos ahora a lo largo del tiempo con una tasa de interés más baja valen más cuando son traídos a valor presente.
 
 
 
@@ -419,7 +418,7 @@ grafico2(bono2$Fecha.de.evaluación,bono2$INT_ACC.2,bono2$TOTAL,bono2$Gcapital)
 
 ```
 
-Se aprecia un interés constante durante todo el periodo lo que me genera un Ganancia de capital decreciente, por el paso del tiempo, de una manera lineal y de mínima variación, lo que afecta de la misma manera al Total.
+Se aprecia un interés constante durante todo el periodo lo que me genera un Ganancia de capital decreciente, por el paso del tiempo, de una manera lineal y de mínima variación, lo que afecta de la misma manera al Total. La curva de interés acumulado es igual a la del caso en el que se tiene la disminución de la tasa de forma paulatina como en el caso anterior.
 
 
 
@@ -509,7 +508,7 @@ grafico2(bono3$Fecha.de.evaluación,bono3$INT_ACC.2,bono3$TOTAL,bono3$Gcapital)
 
 ```
 
-Se puede observar un comportamiento igual al bono 2 hasta la caída abrupta del interés de 200 pp, generando un efecto contrario en G.C., la cual aumenta cerca de veintitrés mil en un solo día, afectando positivamente el total. El comportamiento de estos dos después del alza es opuesto, puesto que, ahora la ganancia de capital decrece, mientras que el total aumenta.
+Se puede observar un comportamiento igual al bono 2 hasta la caída abrupta del interés de 200 pp, generando un efecto contrario en G.C., la cual aumenta cerca de veintitrés mil en un solo día, afectando positivamente el total. El comportamiento de estos dos después del alza es opuesto, puesto que, ahora la ganancia de capital decrece, mientras que el total aumenta. Al igual que en los casos anteriores a pesar e que la caída es rentina el interés acumulado no se ve afectado.
 
 
 \subsection{Análisis descriptivo del bono 4}
@@ -592,11 +591,12 @@ grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
 
 ```
 
-Con este bono apreciamos un escenario contrario al anterior, un drástico aumento de 200 pp en la tasa de interés del bono. Lo anterior genera una caída de cerca 23000 en G.P., así por el mismo monto en el total. Sin embargo posteriormente se muestra una creciente ganancia de capital y una pendiente mayor en el total.
+Con este bono apreciamos un escenario contrario al anterior, un drástico aumento de 200 pp en la tasa de interés del bono. Lo anterior genera una caída de cerca 23000 en G.P., así por el mismo monto en el total. Sin embargo posteriormente se muestra una creciente ganancia de capital y una pendiente mayor en el total. En este otro caso contrario al anterior no afecta tampoco a los intereses acumulados.
 
 \section{Conclusión}
 \par Se puede concluir de los datos expuestos, que en una situación sin shocks como lo es el escenario del bono 2, los mismo van a afectar G.C. a través del tiempo dependiendo de cómo estos actúen, ya sea incrementando el interés del bono o haciéndolo caer, como se vio en los bonos 3 y 4. En el escenario del bono 1, se puede apreciar que la decreciente tasa de interés del bono, no afecta de la misma manera a la G.C. y a la ganancia neta, durante el periodo, puesto que se tiene un periodo creciente y uno decreciente. Lo anterior es debido a los valores fijos que se tienen a la fecha de vencimiento, es decir que las variaciones en la tasa de interés no influyen en los resultados al vencimiento. 
 \par A su vez se puede concluir que los cambios que se distribuyen a lo largo de período generan curvas de G.C. y de totla más suaves que los casos en los que el cambio se hace de manera abrupta. También a pesar de que los shocks generen un cambios muy pronunciados en las curvas de de total, G.C. y la de interés, finalmente las curvas de G.C. y total tanto en el caso de un shock distribuido de forma paulatina, como el de un shock repentino y en el que no hay ningún shock se cumple que las ganancias de capital y totales son las mismas al final de todos los períodos.
+Es importante notar que una caída o aumento en la tasa de rendimiento no afecta los intereses acumulados, esto se debe a la tasa de cupón no se ve afecta de forma directa, y siempre se mantiene el mismo comportamiento para los intereses acumulados en cualquierea de los casos sea un aumento, disminución o que la tasa se mantenga constante incluso aunque los cambios sean repentinos.
 \par Para culminar se tiene que se pueden modelar los shocks o comportamiento de las tasas de distintas formas, y en cierta medida el método que se emplee va depender de cuánta información se tenga.
 
 
