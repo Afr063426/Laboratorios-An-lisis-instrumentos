@@ -29,9 +29,9 @@ indent: true
 \section{Introducción}
 
 
-\phantom{abc} En el documento que se ha proporcionado se encuentran los flujos de un bono el cuál cuenta con cupones de $2.5\%$ compuestos semestralmentes es decir se pagan dos veces al año y el monto pagado es de $1.25\%$ sobre el facial, que en este caso corresponde a 100 y este también corresponde al valor de redención. Ahora como se había mencionado anteriormente se hacen dos pagos al año estos pagos se realizan a final de febrero es decir 28 o 29 dependiendo de si el año es bisiesto o no y los 31 de agosto. Otro aspecto a tener en cuenta es que estos bonos están calculados bajo el método $\frac{\textbf{real}}{360}$, regla del banquero.
+\phantom{abc} En el presente documento se encuentra un análisis de los resultados obtenidos a partir de la réplica de los datos que se han proporcionado por parte de la docente, mismos que cuentan como se desarrolla un bono ante diferentes escenarios, por esto se tiene que resaltar información relevante de los mismos, siendo así que en la misma se encuentran los flujos de un bono, el cual cuenta con cupones de $2.5\%$ compuestos semestralmente es decir se pagan dos veces al año y el monto pagado es de $1.25\%$ sobre el facial, que en este caso corresponde a 100 y este también corresponde al valor de redención. Ahora como se había mencionado anteriormente se hacen dos pagos al año estos pagos se realizan a final de febrero es decir 28 o 29 dependiendo de si el año es bisiesto o no y los 31 de agosto. Otro aspecto a tener en cuenta es que estos bonos están calculados bajo el método $\frac{\textbf{real}}{360}$, regla del banquero
 
-  \par Entonces se tendría que cada período se contabiliza como 180 días sin embargo para determinar el precio y otros aspectos que se determinan por medio de este, se emplea el tiempo real que a transcurrido desde el último pago de cupón hasta la fecha actual. Se tiene que el monto facial equivalente en bonos es 1000000 por lo que en cupones se debe recibir 12500 por período.
+  \par Entonces se tendría que cada período se contabiliza como 180 días sin embargo para determinar el precio y otros aspectos que se determinan por medio de este, se emplea el tiempo real que ha transcurrido desde el último pago de cupón hasta la fecha actual. Se tiene que el monto facial equivalente en bonos es 1000000 por lo que en cupones se debe recibir 12500 por período.
 
 \section{Marco Teórico}
 
@@ -57,7 +57,7 @@ indent: true
     \frac{\frac{FC}{m}+R}{\frac{i^{(m)}}{m}\cdot\frac{d-l}{d}+1}-\frac{FC}{m}\cdot\frac{l}{d} & n=1
     \end{cases}
     \]
-    \par Esto es lo que se conoce como precio limpio (clean price). Se escribe en forma de sumatoría ya que se quiere saber el precio durante el transcurso de los períodos no en períodos específicos. Se tiene que lo que se hace es traer al valor presente los flujos en este caso el valor de rendención $M$ y los cupones que son la tasa cupón $C$ por el facial $F$  y dividido entre la frecuencia $m$, se tiene que $i^{(m)}$ la tasa de rendimiento, $m$ el número de períodos y $n$ el número de cupones que hacen falta para que venza el bono. Se tiene que se le resta el monto adquirido del cupón del período es decir $F\frac{Cl}{md}$, esto para no contabilizar el monto del cupón adquirido hasta esa fecha. Se tiene que $d$ son las cantidad de días que han transcurrido desde el pago del último cupón, $d-l$ es la cantidad de días que faltan para que se haga el pago y $d$ es la cantidad de días que se supone tiene un período. Cabe destacar que muchas de estas variables son establecidas a conveniencia despendiendo de lo que se establecido como la estructura del bono, por ejemplo se podría emplear el método 360/360 o real/real que afecta la estructura de lo anterioermente mostrado.
+    \par Esto es lo que se conoce como precio limpio (clean price). Se escribe en forma de sumatoría ya que se quiere saber el precio durante el transcurso de los períodos no en períodos específicos. Se tiene que lo que se hace es traer al valor presente los flujos en este caso el valor de rendención $M$ y los cupones que son la tasa cupón $C$ por el facial $F$  y dividido entre la frecuencia $m$, se tiene que $i^{(m)}$ la tasa de rendimiento, $m$ el número de períodos y $n$ el número de cupones que hacen falta para que venza el bono. Se tiene que se le resta el monto adquirido del cupón del período es decir $F\frac{Cl}{md}$, esto para no contabilizar el monto del cupón adquirido hasta esa fecha. Se tiene que $d$ son las cantidad de días que han transcurrido desde el pago del último cupón, $d-l$ es la cantidad de días que faltan para que se haga el pago y $d$ es la cantidad de días que se supone tiene un período. Cabe destacar que muchas de estas variables son establecidas a conveniencia dependiendo de lo que se establecido como la estructura del bono, por ejemplo se podría emplear el método 360/360 o real/real que afecta la estructura de lo anterioermente mostrado.
     \par Se tiene que en este caso el día en el que se está haciendo la valoración no se toma en cuenta esto se debe a que durante este día no se ha tenido ninguna ganacia de intereses por lo que en ese mismo no se contabiliza, salvo que fuese interes constante.
     \par Un aspecto importante es que cuando $n>1$ se emplea el interés compuesto mientras que el decuento se hace mediante el interés simple. Para lo que es el caso en el que solo queda un período es decir solo queda un cupon i.e. $n=1$ se tiene que se emplea la valoración mediante el método de interés simple, al hacerse de esta forma en lugar de con interés compuesto el valor del dinero en el período que se esté valorando es menor que si se hiciera de forma compuesta. Se puede mostrar que para los casos en que $n>1$ la valoración mediante el método compuesto brinda un precio menor que si se hace mediante el método de interés simple.
      \par Ganancia de capital esto representa la ganancia o perdida que se está teniendo cada día por el monto invertido en bonos que es equivalente a 10000 bonos o $1000000$ en facial matemáticamente
@@ -89,7 +89,7 @@ s_i=\frac{l_2s_1+l_1s_2}{l}+s_m
 
 \section{Resultados}
 
-\phantom{abc} En la presente sección se trabajará con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2), esto por motivos prácticos a la hora de desarrollar el cuerpo del trabajo, así mismo se conservo la palabra total para referises a la ganancia neta del capital del bono, puesto que es el nombre de la columna del excel original, esto para los gráficos. 
+\phantom{abc} En la presente sección se trabajará con una serie de abreviaturas, siendo así que se tiene Observ (Observación), G.C (Ganancia de capital), IA2 (Interés acumulado 2), esto por motivos prácticos a la hora de desarrollar el cuerpo del trabajo, así mismo se conservo la palabra total para referirse a la ganancia neta del capital del bono, puesto que es el nombre de la columna del excel original, esto para los gráficos. 
 
 \par Es bueno tener en cuenta la relación para las variables presentadas, el cambio en el interés me afecta indirectamente la ganancia o pérdida de capital, la cual a su vez me afecta el total de una manera directa, esto por la relación que guardan las fórmulas utilizadas. Cabe resaltar que el Interés acumulado 2 es el mismo para todos los escenarios, por lo descrito en el marco teórico y a su vez tanto los valores iniciales como los finales son iguales en todos los escenarios.
 
@@ -155,8 +155,7 @@ calculo_precio <-
          vectorr[i]<-t_1/t_2-t_3
         }else{
         vectorr[i] <- (
-          facial * (1 + tasa_efectiva) ^ (-N - Dsc / E) + facial * cupon_p * sum((1 +
-                                                                                    tasa_efectiva) ^ (-c - Dsc / E)) - facial * cupon_p * A / E
+          facial * (1 + tasa_efectiva) ^ (-N - Dsc / E) + facial * cupon_p * sum((1 +tasa_efectiva) ^ (-c - Dsc / E)) - facial * cupon_p * A / E
         )}
       } else{
         vectorr[i] <- facial
@@ -166,14 +165,7 @@ calculo_precio <-
     return(vectorr)
   }
 creacion_de_columnas <-
-  function(interes,
-           interes2,
-           yas_bond_yld,
-           G_capital,
-           shock,
-           TOTAL,
-           Retorno_total,
-           YAS_BOND_PX) {
+  function(interes, interes2,yas_bond_yld,G_capital, shock, TOTAL, Retorno_total, YAS_BOND_PX) {
     for (i in 1:(length(fecha) - 1)) {
       if (interes[i] < interes[i + 1]) {
         interes2[i + 1] <- interes2[i] + interes[i + 1] - interes[i]
@@ -199,15 +191,7 @@ creacion_de_columnas <-
                            TOTAL[i + 1] / as.numeric(as.character(Datos$Monto)) * 100)
       }
     }
-    return(list(
-      interes,
-      interes2,
-      yas_bond_yld,
-      G_capital,
-      shock,
-      TOTAL,
-      Retorno_total
-    ))
+    return(list(interes,interes2,yas_bond_yld,G_capital,shock,TOTAL,Retorno_total ))
   }
 ```
 
@@ -334,7 +318,7 @@ grafico2(bono1$Fecha.de.evaluación,bono1$INT_ACC.2,bono1$TOTAL,bono1$Gcapital)
 ```
 
 
-\par Como se puede observar se tiene una caída lineal del interés del bono con el paso del tiempo esto se debe a la disminución de la tasa que se hace el ajuste paulatinamente conforme pasan los días, lo que refleja en un comportamiento cóncavo para la ganancia de capital, lo que influye en el mismo comportamiento del total.También se puede notar que a pesar de que la tasa de descuento varia con el tiempo y me afecta la curvas de G.C. y la de total, la de los intereses no se ve afecta, esto se debe a que no se ven afectos los pagos de lo cupones, a pesar de que estos ahora a lo largo del tiempo con una tasa de interés más baja valen más cuando son traídos a valor presente.
+\par Como se puede observar se tiene una caída lineal del interés del bono con el paso del tiempo, esto se debe a la disminución diaria de la tasa, lo que se refleja en un comportamiento cóncavo para la ganancia de capital, lo que influye en el mismo comportamiento de la ganancia neta de capital como consecuencia. La grafica de los intereses acumulados 2  no se ve afecta, esto se debe a que no se ven afectados los pagos de los cupones, a pesar de que estos ahora a lo largo del tiempo con una tasa de interés más baja valen más cuando son traídos a valor presente.
 
 
 
@@ -428,7 +412,7 @@ grafico2(bono2$Fecha.de.evaluación,bono2$INT_ACC.2,bono2$TOTAL,bono2$Gcapital)
 
 ```
 
-Se aprecia un interés constante durante todo el periodo lo que me genera un Ganancia de capital decreciente, por el paso del tiempo, de una manera lineal y de mínima variación, lo que afecta de la misma manera al Total. La curva de interés acumulado es igual a la del caso en el que se tiene la disminución de la tasa de forma paulatina como en el caso anterior.
+Se aprecia un interés constante durante todo el periodo lo que me genera una ganancia de capital decreciente, por el paso del tiempo, de una manera lineal y de mínima variación, lo que afecta de la misma manera a la ganancia neta. La curva de interés acumulado 2 es igual a la del caso anterior, conserva un crecimiento lineal.
 
 
 
@@ -518,7 +502,7 @@ grafico2(bono3$Fecha.de.evaluación,bono3$INT_ACC.2,bono3$TOTAL,bono3$Gcapital)
 
 ```
 
-Se puede observar un comportamiento igual al bono 2 hasta la caída abrupta del interés de 200 pp, generando un efecto contrario en G.C., la cual aumenta cerca de veintitrés mil en un solo día, afectando positivamente el total. El comportamiento de estos dos después del alza es opuesto, puesto que, ahora la ganancia de capital decrece, mientras que el total aumenta. Al igual que en los casos anteriores a pesar e que la caída es rentina el interés acumulado no se ve afectado.
+Se puede observar un comportamiento igual al bono 2 hasta la caída abrupta del interés de 200 pp, generando un efecto contrario en G.C., la cual aumenta cerca de veintitrés mil en un solo día, afectando positivamente a la ganancia neta total. El comportamiento de estos dos después del alza es opuesto, puesto que, ahora la ganancia de capital decrece, mientras que el total aumenta. Al igual que en los casos anteriores a pesar que la caída es repentina el interés acumulado no se ve afectado.
 
 
 \subsection{Análisis descriptivo del bono 4}
@@ -601,16 +585,16 @@ grafico2(bono4$Fecha.de.evaluación,bono4$INT_ACC.2,bono4$TOTAL,bono4$Gcapital)
 
 ```
 
-Con este bono apreciamos un escenario contrario al anterior, un drástico aumento de 200 pp en la tasa de interés del bono. Lo anterior genera una caída de cerca 23000 en G.P., así por el mismo monto en el total. Sin embargo posteriormente se muestra una creciente ganancia de capital y una pendiente mayor en el total. En este otro caso contrario al anterior no afecta tampoco a los intereses acumulados.
+Con este bono apreciamos un escenario contrario al anterior, un drástico aumento de 200 p.p. en la tasa de interés del bono. Lo anterior genera una caída de cerca veintitrés mil en la ganancia de capital, así por el mismo monto en la ganancia neta. Sin embargo, posteriormente se muestra una creciente ganancia de capital y una pendiente mayor en la ganancia de capital neta. En este caso tampoco afecta a los intereses acumulados.
 
 \section{Conclusión}
 
 
-\par Se puede concluir de los datos expuestos, que en una situación sin shocks como lo es el escenario del bono 2, los mismo van a afectar G.C. a través del tiempo dependiendo de cómo estos actúen, ya sea incrementando el interés del bono o haciéndolo caer, como se vio en los bonos 3 y 4. En el escenario del bono 1, se puede apreciar que la decreciente tasa de interés del bono, no afecta de la misma manera a la G.C. y a la ganancia neta, durante el periodo, puesto que se tiene un periodo creciente y uno decreciente. Lo anterior es debido a los valores fijos que se tienen a la fecha de vencimiento, es decir que las variaciones en la tasa de interés no influyen en los resultados al vencimiento. 
-\par A su vez se puede concluir que los cambios que se distribuyen a lo largo de período generan curvas de G.C. y de totla más suaves que los casos en los que el cambio se hace de manera abrupta. También a pesar de que los shocks generen un cambios muy pronunciados en las curvas de de total, G.C. y la de interés, finalmente las curvas de G.C. y total tanto en el caso de un shock distribuido de forma paulatina, como el de un shock repentino y en el que no hay ningún shock se cumple que las ganancias de capital y totales son las mismas al final de todos los períodos.
-Es importante notar que una caída o aumento en la tasa de rendimiento no afecta los intereses acumulados, esto se debe a la tasa de cupón no se ve afecta de forma directa, y siempre se mantiene el mismo comportamiento para los intereses acumulados en cualquierea de los casos sea un aumento, disminución o que la tasa se mantenga constante incluso aunque los cambios sean repentinos.
-
+\phantom{abc} Se puede concluir de los datos expuestos, que en una situación sin shocks como lo es el escenario del bono 2, los mismo van a afectar la ganancia de capital a través del tiempo dependiendo de cómo estos actúen, ya sea incrementando el interés del bono o haciéndolo caer, como se vio en los bonos 3 y 4. En el escenario del bono 1, se puede apreciar que la decreciente tasa de interés del bono, no afecta de la misma manera a la ganancia de capital y a la ganancia neta, durante el periodo, puesto que se tiene un periodo creciente y uno decreciente. Lo anterior es debido a los valores fijos que se tienen a la fecha de vencimiento, es decir que las variaciones en la tasa de interés no influyen en los resultados al vencimiento. 
+\par A su vez se puede concluir que los cambios que se distribuyen a lo largo de un período generan curvas de ganancia de capital y de ganancia neta más suaves que los casos en los que el cambio se hace de manera abrupta. También a pesar de que los shocks generen cambios muy pronunciados en las curvas de ganancia neta, ganancia de capital y la de interés, finalmente las curvas de ganancia de capital y ganancia neta, tanto en el caso de un shock distribuido de forma paulatina, como el de un shock repentino y en el que no hay ningún shock se cumple que las ganancias de capital y totales son las mismas al final de todos los períodos.
+Es importante notar que una caída o aumento en la tasa de rendimiento no afecta los intereses acumulados, esto se debe a la tasa de cupón no se ve afectada de forma directa, y siempre se mantiene el mismo comportamiento para los intereses acumulados en cualquiera de los casos sea un aumento, disminución o que la tasa se mantenga constante incluso aunque los cambios sean repentinos.
 \par Para culminar se tiene que se pueden modelar los shocks o comportamiento de las tasas de distintas formas, y en cierta medida el método que se emplee va depender de cuánta información se tenga.
+
 
 
 \newpage\section{Referencias}
